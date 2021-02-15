@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brokers-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: brokers
+  template:
+    metadata:
+      labels:
+        app: brokers
+    spec:
+      containers:
+        - name: brokers
+          image: us.gcr.io/nasddatax-dev/brokers
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: nasddatax
+            - name: MONGO_URI
+              value: 'mongodb://brokers-mongo-srv:27017/brokers'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: SENDGRID
+              valueFrom:
+                secretKeyRef:
+                  name: send-grid-secret
+                  key: SENDGRID
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brokers-srv
+spec:
+  selector:
+    app: brokers
+  ports:
+    - name: brokers
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

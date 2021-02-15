@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: equity-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  equity-mongo
+  template:
+    metadata:
+      labels:
+        app: equity-mongo
+    spec:
+      containers:
+        - name: equity-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: equity-mongo-srv
+spec:
+  selector:
+    app: equity-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

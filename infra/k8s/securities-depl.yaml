@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securities-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: securities
+  template:
+    metadata:
+      labels:
+        app: securities
+    spec:
+      containers:
+        - name: securities
+          image: us.gcr.io/nasddatax-dev/securities
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: nasddatax
+            - name: MONGO_URI
+              value: 'mongodb://securities-mongo-srv:27017/securities'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: SENDGRID
+              valueFrom:
+                secretKeyRef:
+                  name: send-grid-secret
+                  key: SENDGRID
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: securities-srv
+spec:
+  selector:
+    app: securities
+  ports:
+    - name: securities
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

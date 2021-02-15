@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: equity-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: equity
+  template:
+    metadata:
+      labels:
+        app: equity
+    spec:
+      containers:
+        - name: equity
+          image: us.gcr.io/nasddatax-dev/equity
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://equity-mongo-srv:27017/equity'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: SENDGRID
+              valueFrom:
+                secretKeyRef:
+                  name: send-grid-secret
+                  key: SENDGRID
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: equity-srv
+spec:
+  selector:
+    app: equity
+  ports:
+    - name: equity
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

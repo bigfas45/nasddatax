@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securities-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  securities-mongo
+  template:
+    metadata:
+      labels:
+        app: securities-mongo
+    spec:
+      containers:
+        - name: securities-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: securities-mongo-srv
+spec:
+  selector:
+    app: securities-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
