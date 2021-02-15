@@ -31,3 +31,4 @@ spec:
             backend:
               serviceName: brokers-srv
               servicePort: 3000
+              

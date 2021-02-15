@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: nasddatax.dev
+    - host: nasddatax.c
       http:
         paths:
           - path: /api/users/?(.*)
