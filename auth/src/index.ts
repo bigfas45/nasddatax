@@ -5,7 +5,10 @@ import { natsWrapper } from './nats-wrapper';
 import {ExpirationCompleteListener } from './events/listener/expiration-complete-listener';
 
 const start = async () => {
-  console.log('Starting up!!!!!')
+
+
+  console.log('Starting u!!!p')
+
   
     if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
