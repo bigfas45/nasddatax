@@ -1,0 +1,13 @@
+name: tests-brokers
+
+on:
+  pull_request:
+    path:
+      - 'brokers/**'
+
+jobs:
+  build:  
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd auth && npm install 
