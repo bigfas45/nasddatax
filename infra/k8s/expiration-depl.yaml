@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: expiration
-          image: us.gcr.io/nasddatax-dev/expiration
+          image: dimeji45/expiration
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
@@ -31,4 +31,3 @@ spec:
                   key: SENDGRID
             - name: REDIS_HOST
               value: expiration-redis-srv
-

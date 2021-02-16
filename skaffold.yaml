@@ -6,12 +6,12 @@ deploy:
       - ./infra/k8s/*
       - ./infra/k8s-dev/*
 build:
-  # local:
-  #   push: false
-  googleCloudBuild: 
-    projectId: nasddatax-dev
+  local:
+    push: false
+  # googleCloudBuild:
+  #   projectId: nasddatax-dev
   artifacts:
-    - image: us.gcr.io/nasddatax-dev/auth
+    - image: dimeji45/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -19,7 +19,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/nasddatax-dev/equity
+    - image: dimeji45/equity
       context: equity
       docker:
         dockerfile: Dockerfile
@@ -27,7 +27,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/nasddatax-dev/client
+    - image: dimeji45/client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -35,7 +35,7 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
-    - image: us.gcr.io/nasddatax-dev/expiration
+    - image: dimeji45/expiration
       context: expiration
       docker:
         dockerfile: Dockerfile
@@ -43,7 +43,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/nasddatax-dev/securities
+    - image: dimeji45/securities
       context: securities
       docker:
         dockerfile: Dockerfile
@@ -51,7 +51,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/nasddatax-dev/brokers
+    - image: dimeji45/brokers
       context: brokers
       docker:
         dockerfile: Dockerfile
@@ -59,6 +59,3 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-
-
-      
