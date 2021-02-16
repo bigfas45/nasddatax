@@ -17,7 +17,7 @@ const Access = () => {
                     <h3 class="nk-error-title">LETS JOIN AND WORK WITH US</h3>
                     <p class="nk-error-text">
                       Contact marketoperations@nasdng.com or (+234-902-455-9686)
-                      for more information
+                      for more information.
                     </p>
                     <a
                       href="user/dashboard"
