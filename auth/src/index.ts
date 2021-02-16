@@ -6,7 +6,7 @@ import {ExpirationCompleteListener } from './events/listener/expiration-complete
 
 const start = async () => {
 
-  console.log('Starting up.....................................')
+  console.log('Starting up............................................')
 
  
 
