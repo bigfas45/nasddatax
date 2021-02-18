@@ -16,7 +16,8 @@ export const email = async (
     
   req.session = {
       password: password
-  };
+    };
+    
 
 
   const emailData = {

@@ -7,6 +7,7 @@ import axios from 'axios';
     return axios.create({
       // baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
       baseURL: 'http://www.nasdfundy.com/',
+      
       headers: req.headers,
     });
   } else {

@@ -4,11 +4,11 @@ deploy:
   kubectl:
     manifests:
       - ./infra/k8s/*
-      - ./infra/k8s-dev/* 
+      - ./infra/k8s-dev/*
 build:
   local:
     push: false
-  # googleCloudBuild:
+  googleCloudBuild:
   #   projectId: nasddatax-dev
   artifacts:
     - image: dimeji45/auth
