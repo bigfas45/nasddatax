@@ -20,18 +20,20 @@ const Chart = () => {
 
   useEffect(() => {
     doRequest();
+
+     var mockData = [];
+
+     for (var j = 0; j < rates.length; j++) {
+       var presentdate = rates[j].present_date;
+       presentdate = strtotime(presentdate);
+       presentdate *= 1000;
+       var usi = rates[j].usi;
+       var deals = rates[j].deals;
+       mockData.push([presentdate, usi, deals]);
+     }
   }, []);
 
-  var mockData = [];
-
-  for (var j = 0; j < rates.length; j++) {
-    var presentdate = rates[j].present_date;
-    presentdate = strtotime(presentdate);
-    presentdate *= 1000;
-    var usi = rates[j].usi;
-    var deals = rates[j].deals;
-    mockData.push([presentdate, usi, deals]);
-  }
+ 
 
  
 
