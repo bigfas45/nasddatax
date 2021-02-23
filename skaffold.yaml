@@ -8,7 +8,7 @@ deploy:
 build:
   local:
     push: false
-  googleCloudBuild:
+  # googleCloudBuild:
   #   projectId: nasddatax-dev
   artifacts:
     - image: dimeji45/auth
