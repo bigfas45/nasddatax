@@ -7,7 +7,7 @@ import useRequest from '../hooks/use-request';
 var strtotime = require('strtotime');
 const Chart = () => {
   const [rates, setRates] = useState([]);
-
+  var mockData = [];
   const { doRequest, errors, loading } = useRequest({
     url: `/api/equity/usi`,
     method: 'get',
@@ -21,7 +21,7 @@ const Chart = () => {
   useEffect(() => {
     doRequest();
 
-     var mockData = [];
+   
 
      for (var j = 0; j < rates.length; j++) {
        var presentdate = rates[j].present_date;
