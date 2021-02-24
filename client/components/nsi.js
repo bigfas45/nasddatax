@@ -4,6 +4,7 @@ import useRequest2 from '../hooks/use-request2';
 
 const Nsi = () => {
   const [nisT, setNsiT] = useState([]);
+  
   const [nisY, setNsnisty] = useState([]);
 
   const { doRequest, errors, loading } = useRequest({
