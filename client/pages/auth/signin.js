@@ -7,6 +7,7 @@ import Ticker from '../../components/ticker';
 import Link from 'next/link';
 import Loader from 'react-loader-spinner';
 
+
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,6 +47,7 @@ const Signin = () => {
     <Fragment>
       <Ticker></Ticker>
       <body className="nk-body bg-white npc-general pg-auth">
+        
         <Layout title="Login | NASD Data Portal" description="" />
         <div className="nk-app-root">
           <div className="nk-main ">
