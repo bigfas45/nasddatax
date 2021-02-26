@@ -76,7 +76,7 @@ const Signin = () => {
                     <div className="card-inner card-inner-lg">
                       <div className="nk-block-head">
                         <div className="nk-block-head-content">
-                          <h4 className="nk-block-title">Sign-In</h4>
+                          <h4 className="nk-block-title">Signin</h4>
                           <div className="nk-block-des">
                             <p>
                               Access the NASD Data portal using your email and
