@@ -9,10 +9,10 @@ import Router, { useRouter } from 'next/router';
 const Brokers = ({ currentUser }) => {
 
   useEffect(() => {
-  currentUser && currentUser.status === 'free'
-    ? Router.push('/auth/access-denied')
-    : '';
-  }, [])
+    currentUser && currentUser.status === 'free'
+      ? Router.push('/auth/access-denied')
+      : '';
+  }, []);
 
   return (
     <Fragment>
