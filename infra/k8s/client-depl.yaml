@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: us.gcr.io/nasddatax-dev/client
+          image: dimeji45/client
           env:
             - name: JWT_KEY
               valueFrom:
