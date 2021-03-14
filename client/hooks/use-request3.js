@@ -16,13 +16,14 @@ const useRequest3 = ({ url, method, body, onSuccess }) => {
 
       if (onSuccess) {
         setLoading(false);
-         setSuccess(true);
+        setSuccess(true);
         onSuccess(response.data);
       }
 
       return response.data;
     } catch (err) {
       setLoading(false);
+      console.log({ err });
       setErrors(
         <div className="example-alert">
           {err.response.data.errors.map((err) => (

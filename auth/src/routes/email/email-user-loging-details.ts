@@ -11,12 +11,15 @@ export const email = async (
 ) => {
     const { email, firstname, lastname } = req.body;
 
-    const password = Math.random().toString(36).slice(2);
-    console.log(password);
+    // const password = Math.random().toString(36).slice(2);
+    // console.log(password);
+
+    const password = "jutrrghd";
     
-  req.session = {
-      password: password
-    };
+//   req.session = {
+//       password: password
+//     };
+    
     
 
 

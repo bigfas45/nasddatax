@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: equity
-          image: dimeji45/equity
+          image: us.gcr.io/nasddatax-dev/equity
           env:
             - name: MONGO_URI
               value: 'mongodb://equity-mongo-srv:27017/equity'

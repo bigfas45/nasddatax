@@ -362,10 +362,7 @@ const Securities = ({ currentUser }) => {
                                           <div key={i} class="col-sm-4">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
-                                                <a
-                                                  class="nk-wgw-inner"
-                                                  href="html/crypto/wallet-bitcoin.html"
-                                                >
+                                              
                                                   <div class="nk-wgw-name">
                                                     <div class="nk-wgw-icon">
                                                       <em class="icon ni ni-sign-btc"></em>
@@ -387,7 +384,7 @@ const Securities = ({ currentUser }) => {
                                                       </span>
                                                     </div>
                                                   </div>
-                                                </a>
+                                                
                                               </div>
                                             </div>
                                           </div>
@@ -401,10 +398,7 @@ const Securities = ({ currentUser }) => {
                                           <div key={i} class="col-sm-4">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
-                                                <a
-                                                  class="nk-wgw-inner"
-                                                  href="html/crypto/wallet-bitcoin.html"
-                                                >
+                                               
                                                   <div class="nk-wgw-name">
                                                     <div class="nk-wgw-icon">
                                                       <em class="icon ni ni-sign-btc"></em>
@@ -427,7 +421,7 @@ const Securities = ({ currentUser }) => {
                                                       </span>
                                                     </div>
                                                   </div>
-                                                </a>
+                                               
                                               </div>
                                             </div>
                                           </div>
@@ -441,10 +435,7 @@ const Securities = ({ currentUser }) => {
                                           <div key={i} class="col-sm-4">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
-                                                <a
-                                                  class="nk-wgw-inner"
-                                                  href="html/crypto/wallet-bitcoin.html"
-                                                >
+                                               
                                                   <div class="nk-wgw-name">
                                                     <div class="nk-wgw-icon">
                                                       <em class="icon ni ni-sign-btc"></em>
@@ -466,7 +457,7 @@ const Securities = ({ currentUser }) => {
                                                       </span>
                                                     </div>
                                                   </div>
-                                                </a>
+                                               
                                               </div>
                                             </div>
                                           </div>

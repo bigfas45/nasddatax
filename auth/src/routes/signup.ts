@@ -46,7 +46,11 @@ router.post('/api/users/signup', [
       throw new BadRequestError('Email in use');
     }
 
-    const password = req.session?.password;
+
+
+    const password = 'jutrrghd'
+
+    console.log("password", password)
 
     const user = User.build({ email, password, bCode, firstname, lastname , expiresAt: expiration, status:PremiumStatus.FreePackage });
     await user.save();

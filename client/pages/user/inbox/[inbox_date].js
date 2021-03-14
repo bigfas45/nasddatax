@@ -286,7 +286,7 @@ const InboxTrade = ({ inbox_date, currentUser }) => {
 InboxTrade.getInitialProps = async (context, client, currentUser) => {
   const { inbox_date } = context.query;
 
-  console.log({ currentUser });
+
 
   return { inbox_date: inbox_date };
 };

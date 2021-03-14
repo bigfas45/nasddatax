@@ -36,7 +36,7 @@ const DashboardLiveTable = () => {
           <div className="card-inner border-bottom">
             <div className="card-title-group">
               <div className="card-title">
-                <h6 className="title">Recent Investment</h6>
+                <h6 className="title">Today’s trade activities</h6>
               </div>
             </div>
           </div>
@@ -136,14 +136,14 @@ const DashboardLiveTable = () => {
                       <div className="nk-tb-col">
                         <div className="align-center">
                           <span className="tb-sub tb-amount">
-                            {trades.openprice}
+                            {trades.openprice.toFixed(2)}
                           </span>
                         </div>
                       </div>
                       <div className="nk-tb-col">
                         <div className="align-center">
                           <span className="tb-sub tb-amount">
-                            {trades.high}
+                            {trades.high.toFixed(2)}
                           </span>
                         </div>
                       </div>
@@ -156,7 +156,9 @@ const DashboardLiveTable = () => {
                       </div>
                       <div className="nk-tb-col">
                         <div className="align-center">
-                          <span className="tb-sub tb-amount">{trades.low}</span>
+                          <span className="tb-sub tb-amount">
+                            {trades.low.toFixed(2)}
+                          </span>
                         </div>
                       </div>
                       <div className="nk-tb-col">

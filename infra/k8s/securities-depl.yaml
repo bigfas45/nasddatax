@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: securities
-          image: dimeji45/securities
+          image: us.gcr.io/nasddatax-dev/securities
           env:
             - name: NATS_CLIENT_ID
               valueFrom:

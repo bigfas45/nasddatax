@@ -80,7 +80,7 @@ const LandingPage = ({ currentUser }) => {
               <Paper className={classes.paper}>
                 {currentUser ? (
                   currentUser.userType === 1 ? (
-                    <a href="#" className="btn btn-primary">
+                    <a href="/admin/dashboard" className="btn btn-primary">
                       <em className="icon ni ni-dashboard"></em>
                       <span>Admin</span>{' '}
                       <em className="icon ni ni-arrow-long-right"></em>

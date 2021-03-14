@@ -4,7 +4,7 @@ import { useState } from 'react';
 const useRequest6 = ({ url, method, body, onSuccess }) => {
   const [errors6, setErrors] = useState(null);
   const [loading6, setLoading] = useState(false);
-     const [success6, setSuccess] = useState(false);
+  const [success6, setSuccess] = useState(false);
   const doRequest6 = async (props = {}) => {
     try {
       setErrors(null);
@@ -16,13 +16,15 @@ const useRequest6 = ({ url, method, body, onSuccess }) => {
 
       if (onSuccess) {
         setLoading(false);
-           setSuccess(true);
+        setSuccess(true);
         onSuccess(response.data);
       }
 
       return response.data;
     } catch (err) {
       setLoading(false);
+      console.log({ err });
+
       setErrors(
         <div className="example-alert">
           {err.response.data.errors.map((err) => (

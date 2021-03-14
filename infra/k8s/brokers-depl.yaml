@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: brokers
-          image: dimeji45/brokers
+          image: us.gcr.io/nasddatax-dev/brokers
           env:
             - name: NATS_CLIENT_ID
               valueFrom:

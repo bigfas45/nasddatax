@@ -10,7 +10,7 @@ const Layout = ({
     <Fragment>
       <Head>
         <base href="/" />
-       
+
         <meta charSet="utf-8" />
         <meta name="author" content="Softnio" />
         <meta
@@ -38,6 +38,7 @@ const Layout = ({
       <Head>
         <script src="/assets/assets/js/bundle.js?ver=1.8.0"></script>
         <script src="/assets/assets/js/scripts.js?ver=1.8.0"></script>
+        <script src="/assets/js/example-toastr.js?ver=1.8.0"></script>
       </Head>
     </Fragment>
   );

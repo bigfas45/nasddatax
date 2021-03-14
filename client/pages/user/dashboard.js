@@ -31,7 +31,7 @@ const Dashboard = ({currentUser}) => {
                             OTC Dashboard
                           </h3>
                           <div className="nk-block-des text-soft">
-                            <p>Welcome to OTC Invest Dashboard</p>
+                            <p>NASD OTC Security Exchange Dashboard</p>
                           </div>
                         </div>
                         <div className="nk-block-head-content">

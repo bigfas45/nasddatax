@@ -25,6 +25,7 @@ const useRequest2 = ({ url, method, body, onSuccess }) => {
       return response.data;
     } catch (err) {
       setLoading(false);
+        console.log({ err });
       setErrors(
         <div className="example-alert">
           {err.response.data.errors.map((err) => (
