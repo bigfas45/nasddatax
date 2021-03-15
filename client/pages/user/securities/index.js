@@ -458,6 +458,7 @@ const Securities = ({ currentUser }) => {
                                                     </div>
                                                   </div>
                                                
+                                                
                                               </div>
                                             </div>
                                           </div>
