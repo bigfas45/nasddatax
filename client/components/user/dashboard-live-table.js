@@ -136,14 +136,14 @@ const DashboardLiveTable = () => {
                       <div className="nk-tb-col">
                         <div className="align-center">
                           <span className="tb-sub tb-amount">
-                            {trades.openprice.toFixed(2)}
+                            {trades.openprice}
                           </span>
                         </div>
                       </div>
                       <div className="nk-tb-col">
                         <div className="align-center">
                           <span className="tb-sub tb-amount">
-                            {trades.high.toFixed(2)}
+                            {trades.high}
                           </span>
                         </div>
                       </div>
@@ -157,7 +157,7 @@ const DashboardLiveTable = () => {
                       <div className="nk-tb-col">
                         <div className="align-center">
                           <span className="tb-sub tb-amount">
-                            {trades.low.toFixed(2)}
+                            {trades.low}
                           </span>
                         </div>
                       </div>
