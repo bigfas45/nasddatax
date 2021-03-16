@@ -210,7 +210,7 @@ const DashboardCard = () => {
           );
         }
       })}
-      ;{/* weekly calculation */}
+      {/* weekly calculation */}
       {weekTrade.map((weekTrades, k) => {
         TdealsWeek += weekTrades.sumDeals;
         TvolumeTradeWeek += weekTrades.sumVolume;

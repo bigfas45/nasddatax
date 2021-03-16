@@ -48,9 +48,9 @@ const Emails = ({ currentUser }) => {
                           <h3 className="nk-block-title page-title">
                             Email Lists
                           </h3>
-                          <div className="nk-block-des text-soft">
+                          {/* <div className="nk-block-des text-soft">
                             <p>You have total 2,595 users.</p>
-                          </div>
+                          </div> */}
                         </div>
                         <div className="nk-block-head-content">
                           <div className="toggle-wrap nk-block-tools-toggle">

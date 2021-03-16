@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import { currentUser } from '@nasddatax/common';
 import {db } from '../models/mysql';
 // import { datetime } from 'node-datetime';
+import moment from 'moment';
 
 const router = express.Router();
 
@@ -17,17 +18,17 @@ router.get('/api/equity/ticker', currentUser, (req: Request, res: Response) => {
     }
 
   if (date2 >= 1 && date2 < 16   && weekday !=='Saturday' && weekday !=='Sunday'  ) {
-    // var dt = datetime.create();
-    // dt.offsetInDays(number);
-    // var formatted = dt.format('Y-m-d');
-    // console.log(formatted)
-    var formatted = '2021-01-29';
+   
+   var d = new Date(); // Today!
+    d.setDate(d.getDate() - number); // Yesterday!
+    var formatted = moment.utc(d).format('YYYY-MM-DD');
+    
   }else{
-    // var dt = datetime.create();
-    // dt.offsetInDays(0);
-    // var formatted = dt.format('Y-m-d');
-    // console.log(formatted)
-      var formatted = '2021-01-29';
+    
+    var d = new Date(); // Today!
+    d.setDate(d.getDate() - 0); // Yesterday!
+
+    var formatted = moment.utc(d).format('YYYY-MM-DD');
   }
     let sql = "SELECT Date, `Security`,`Close Price` as close,`Change Percent` as percent FROM `general_market_summary` WHERE date = ? ";
    //@ts-ignore

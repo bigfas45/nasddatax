@@ -32,7 +32,7 @@ const Header = ({ currentUser }) => {
                 />
               </a>
             </div>
-            <div className="nk-header-news d-none d-xl-block">
+            {/* <div className="nk-header-news d-none d-xl-block">
               <div className="nk-news-list">
                 <a className="nk-news-item" href="#">
                   <div className="nk-news-icon">
@@ -50,7 +50,7 @@ const Header = ({ currentUser }) => {
                   </div>
                 </a>
               </div>
-            </div>
+            </div> */}
             <div className="nk-header-tools">
               <ul className="nk-quick-nav">
                 <li className="dropdown user-dropdown">

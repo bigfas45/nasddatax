@@ -13,6 +13,8 @@ const DashboardLiveTable = () => {
     percentage,
     valueTextChange;
 
+  var high, high2;
+
   let totalQty;
   let totalValue;
 
@@ -120,6 +122,9 @@ const DashboardLiveTable = () => {
 
                 totalValue = trades.value;
                 totalValue++;
+                high = trades.high;
+
+                high2 = parseFloat(high).toFixed(2);
 
                 return (
                   <Fragment>
@@ -136,35 +141,44 @@ const DashboardLiveTable = () => {
                       <div className="nk-tb-col">
                         <div className="align-center">
                           <span className="tb-sub tb-amount">
-                            {trades.openprice}
+                            {parseFloat(trades.openprice).toFixed(2)}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="nk-tb-col">
+                        <div className="align-center">
+                          <span className="tb-sub tb-amount">{high2}</span>
+                        </div>
+                      </div>
+                      <div className="nk-tb-col">
+                        <div className="align-center">
+                          <span className="tb-sub tb-amount">
+                            {trades.highestqty.toLocaleString(
+                              navigator.language,
+                              {
+                                minimumFractionDigits: 0,
+                              }
+                            )}
                           </span>
                         </div>
                       </div>
                       <div className="nk-tb-col">
                         <div className="align-center">
                           <span className="tb-sub tb-amount">
-                            {trades.high}
+                            {parseFloat(trades.low).toFixed(2)}
+                            {}
                           </span>
                         </div>
                       </div>
                       <div className="nk-tb-col">
                         <div className="align-center">
                           <span className="tb-sub tb-amount">
-                            {trades.highestqty}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="nk-tb-col">
-                        <div className="align-center">
-                          <span className="tb-sub tb-amount">
-                            {trades.low}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="nk-tb-col">
-                        <div className="align-center">
-                          <span className="tb-sub tb-amount">
-                            {trades.lowestqty}
+                            {trades.lowestqty.toLocaleString(
+                              navigator.language,
+                              {
+                                minimumFractionDigits: 0,
+                              }
+                            )}
                           </span>
                         </div>
                       </div>
@@ -210,7 +224,7 @@ const DashboardLiveTable = () => {
                       </div>
                     </div>
                   </Fragment>
-                );
+                )
               }
             })}
           </div>

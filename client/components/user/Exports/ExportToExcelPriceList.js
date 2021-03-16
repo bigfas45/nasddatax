@@ -9,9 +9,9 @@ const ExportToExcelPriceList = ({ post }) => {
         id="test-table-xls-button"
         className="export"
         table="table-to-xls"
-        filename="securityData"
+        filename="Daily-Price-List"
         sheet="tablexls"
-        buttonText="Export"
+        buttonText="Price List"
       />
       <table hidden="true" id="table-to-xls">
         <tr>
@@ -39,10 +39,10 @@ const ExportToExcelPriceList = ({ post }) => {
               <tr key={i}>
                 <td> {moment.utc(r.Date).format('MM/DD/YYYY')} </td>
                 <td> {r.Security}</td>
-                <td> {r.RefPrice}</td>
-                <td> {r.ClosePrice}</td>
-                <td> {r.T52WeekHighPrice}</td>
-                <td> {r.T52WeekLowPrice}</td>
+                <td> {r.open}</td>
+                <td> {r.close}</td>
+                <td> {r.I52WH}</td>
+                <td> {r.I52WL}</td>
               </tr>
             );
           })}
