@@ -18,7 +18,6 @@ import Router from 'next/router';
 import { updateEmail } from '../../../components/admin/ApiAdmin';
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import Spinner from 'react-bootstrap/Spinner';
 
 const EmailUpdate = ({ currentUser, EmailId }) => {
   const [data2, setData] = useState([]);
