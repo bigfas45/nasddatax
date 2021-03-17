@@ -309,12 +309,15 @@ const Emails = ({ currentUser }) => {
                                                 <li>
                                                   <a>
                                                     <em className="icon ni ni-eye"></em>
-                                                    <Link
+                                                    {/* <Link
                                                       href="/admin/email/[update]"
                                                       as={`/admin/email/${mail.id}`}
+                                                    > */}
+                                                    <a
+                                                      href={`/admin/email/${mail.id}`}
                                                     >
                                                       <span>Edit Details</span>
-                                                    </Link>
+                                                    </a>
                                                   </a>
                                                 </li>
 

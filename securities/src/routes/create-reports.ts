@@ -43,6 +43,10 @@ router.post('/api/securities/reports/create' , currentUser, emailPi, (req: Reque
       report.file.path = files.file.path;
        // @ts-ignore
       report.file.name = files.file.name;
+    } else {
+      return res.status(400).json({
+        error: ' File fields are required ',
+      });
     }
 
     report.save((err, result) => {

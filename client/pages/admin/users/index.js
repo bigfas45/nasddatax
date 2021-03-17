@@ -368,12 +368,13 @@ const Users = ({ currentUser }) => {
                                                 <li>
                                                   <a>
                                                     <em className="icon ni ni-eye"></em>
-                                                    <Link
+                                                    {/* <Link
                                                       href="/admin/users/[user]"
                                                       as={`/admin/users/${user.id}`}
-                                                    >
+                                                    > */}
+                                                      <a href={`/admin/users/${user.id}`}>
                                                       <span>Edit Details</span>
-                                                    </Link>
+                                                    </a>
                                                   </a>
                                                 </li>
 

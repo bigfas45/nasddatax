@@ -147,23 +147,15 @@ const ReportUpdate = ({ currentUser, ReportId }) => {
 
                     {/* {data2.map((user, i) => {
                       return ( */}
-                   
+
                     <div className="nk-block">
                       <div className="card card-bordered">
-                        <ul className="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
-                          <li className="nav-item">
-                            <a className="nav-filename active">
-                              <em className="icon ni ni-user-fill-c"></em>
-                              <span>Report</span>
-                            </a>
-                          </li>
-                          
-                         
-                        </ul>
+                        
+                       
                         <div className="card-inner card-inner-lg">
                           <div className="nk-block-head">
                             <div className="nk-block-head-content">
-                              <h4 className="nk-block-title">Email</h4>
+                              <h4 className="nk-block-title">Report</h4>
                               <div className="nk-block-des"></div>
                             </div>
                           </div>
@@ -219,7 +211,6 @@ const ReportUpdate = ({ currentUser, ReportId }) => {
                                   </span>
                                 </div>
                               </div>
-
                             </div>
                           </div>
                         </div>

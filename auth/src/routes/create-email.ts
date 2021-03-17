@@ -22,11 +22,13 @@ router.post('/api/users/email/create', currentUser,  (req: Request, res: Respons
     // check for all fields
     const { subject, message, file, link } = fields;
 
-    if (!subject || !message) {
+    if (!subject || !message ) {
       return res.status(400).json({
         error: ' All fields are required ',
       });
     }
+
+
 
     let mail = new Email(fields);
     if (files.file) {
@@ -39,6 +41,10 @@ router.post('/api/users/email/create', currentUser,  (req: Request, res: Respons
       mail.file.path = files.file.path;
        // @ts-ignore
       mail.file.name = files.file.name;
+    } else {
+      return res.status(400).json({
+        error: ' Image fields are required ',
+      });
     }
 
     mail.save((err, result) => {

@@ -281,12 +281,13 @@ const Reports = ({ currentUser }) => {
                                                 <li>
                                                   <a>
                                                     <em className="icon ni ni-eye"></em>
-                                                    <Link
+                                                    {/* <Link
                                                       href="/admin/reports/[update]"
                                                       as={`/admin/reports/${reports.id}`}
-                                                    >
+                                                    > */}
+                                                    <a href={`/admin/reports/${reports.id}`}>
                                                       <span>Edit Details</span>
-                                                    </Link>
+                                                    </a>
                                                   </a>
                                                 </li>
 
