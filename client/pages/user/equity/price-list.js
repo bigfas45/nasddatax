@@ -5,7 +5,7 @@ import SiderBar from '../../../components/user/sidebar';
 import Header from '../../../components/user/header';
 import Footer from '../../../components/user/footer';
 import useRequest2 from '../../../hooks/use-request2';
-import ExportToExcel from '../../../components/user/Exports/ExportToExcelPriceList';
+import ExportToExcel from '../../../components/user/Exports/ExportToExcelPriceList2';
 import Loader from 'react-loader-spinner';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
@@ -41,7 +41,7 @@ const PriceList = ({currentUser}) => {
       accessor: 'Security', // String-based value accessors!
     },
     {
-      Header: 'Ref Price',
+      Header: 'Open Price',
       accessor: 'RefPrice', // String-based value accessors!
     },
 
