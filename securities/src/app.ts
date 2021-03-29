@@ -17,6 +17,7 @@ import { ReportsRouter } from './routes/create-reports';
 import { reportUpdateRouter } from './routes/update-report';
 import { ReportListRouter } from './routes/reports';
 import { reportGetRouter } from './routes/get-report-id';
+import { ReportReadRouter } from './routes/read-file';
 
 
 const app = express();
@@ -42,6 +43,7 @@ app.use(PerformanceRouter);
 app.use(ReportsRouter);
 app.use(reportUpdateRouter);
 app.use(reportGetRouter);
+app.use(ReportReadRouter);
 
 app.use(ReportListRouter);
 

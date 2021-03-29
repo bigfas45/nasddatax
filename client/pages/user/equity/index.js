@@ -10,7 +10,7 @@ import Loader from 'react-loader-spinner';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import Router, { useRouter } from 'next/router';
-
+import moment from 'moment';
 
 
 
@@ -43,6 +43,11 @@ const Equity = ({currentUser}) => {
     {
       Header: 'DATE',
       accessor: 'DATE', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>{moment.utc(props.original.DATE).format('YYYY-MM-DD')}</span>
+        );
+      },
     },
     {
       Header: 'SECURITY',
@@ -56,6 +61,9 @@ const Equity = ({currentUser}) => {
     {
       Header: 'CLOSE_PRICE',
       accessor: 'CLOSE_PRICE', // String-based value accessors!
+      Cell: (props) => {
+        return <span>{parseFloat(props.original.CLOSE_PRICE).toFixed(2)}</span>;
+      },
     },
     {
       Header: 'DEALS',
@@ -64,10 +72,28 @@ const Equity = ({currentUser}) => {
     {
       Header: 'VOLUME',
       accessor: 'VOLUME', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>
+            {props.original.VOLUME.toLocaleString(navigator.language, {
+              minimumFractionDigits: 0,
+            })}
+          </span>
+        );
+      },
     },
     {
       Header: 'VALUE',
       accessor: 'VALUE', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>
+            {props.original.VALUE.toLocaleString(navigator.language, {
+              minimumFractionDigits: 0,
+            })}
+          </span>
+        );
+      },
     },
   ];
 

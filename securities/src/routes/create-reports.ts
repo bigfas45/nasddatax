@@ -17,7 +17,7 @@ router.post('/api/securities/reports/create' , currentUser, emailPi, (req: Reque
 
  
   let form = new formidable.IncomingForm();
-  form.keepExtensions = true;
+  // form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
     if (err) {
       return res.status(400).json({ error: 'File could not be uploaded' });

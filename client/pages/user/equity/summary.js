@@ -7,9 +7,9 @@ import Footer from '../../../components/user/footer';
 import useRequest2 from '../../../hooks/use-request2';
 import useRequest3 from '../../../hooks/use-request3';
 import useRequest4 from '../../../hooks/use-request4';
-import ExportToExcel from '../../../components/user/Exports/ExportToExcelEquityMonthly'
+import ExportToExcel from '../../../components/user/Exports/ExportToExcelEquityMonthly';
 import Router, { useRouter } from 'next/router';
-
+import moment from 'moment';
 import Loader from 'react-loader-spinner';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
@@ -179,10 +179,20 @@ const Summary = ({ currentUser }) => {
     {
       Header: 'HIGEST CLOSE',
       accessor: 'MAX_CLOSE_PRICE', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>{parseFloat(props.original.MAX_CLOSE_PRICE).toFixed(2)}</span>
+        );
+      },
     },
     {
       Header: 'LOWEST CLOSE',
       accessor: 'MIN_CLOSE_PRICE', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>{parseFloat(props.original.MIN_CLOSE_PRICE).toFixed(2)}</span>
+        );
+      },
     },
     {
       Header: 'DEALS',
@@ -191,10 +201,28 @@ const Summary = ({ currentUser }) => {
     {
       Header: 'VOLUME',
       accessor: 'sumVolume', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>
+            {props.original.sumVolume.toLocaleString(navigator.language, {
+              minimumFractionDigits: 0,
+            })}
+          </span>
+        );
+      },
     },
     {
       Header: 'VALUE',
       accessor: 'sumValue', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>
+            {props.original.sumValue.toLocaleString(navigator.language, {
+              minimumFractionDigits: 0,
+            })}
+          </span>
+        );
+      },
     },
   ];
 
@@ -210,10 +238,20 @@ const Summary = ({ currentUser }) => {
     {
       Header: 'HIGEST CLOSE',
       accessor: 'MAX_CLOSE_PRICE', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>{parseFloat(props.original.MAX_CLOSE_PRICE).toFixed(2)}</span>
+        );
+      },
     },
     {
       Header: 'LOWEST CLOSE',
       accessor: 'MIN_CLOSE_PRICE', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>{parseFloat(props.original.MIN_CLOSE_PRICE).toFixed(2)}</span>
+        );
+      },
     },
     {
       Header: 'DEALS',
@@ -222,10 +260,28 @@ const Summary = ({ currentUser }) => {
     {
       Header: 'VOLUME',
       accessor: 'sumVolume', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>
+            {props.original.sumVolume.toLocaleString(navigator.language, {
+              minimumFractionDigits: 0,
+            })}
+          </span>
+        );
+      },
     },
     {
       Header: 'VALUE',
       accessor: 'sumValue', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>
+            {props.original.sumValue.toLocaleString(navigator.language, {
+              minimumFractionDigits: 0,
+            })}
+          </span>
+        );
+      },
     },
   ];
 

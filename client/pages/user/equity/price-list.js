@@ -10,8 +10,9 @@ import Loader from 'react-loader-spinner';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import Router, { useRouter } from 'next/router';
+import moment from 'moment';
 
-const PriceList = ({currentUser}) => {
+const PriceList = ({ currentUser }) => {
   const [data, setData] = useState([]);
 
   const { doRequest2, errors2, loading2, success } = useRequest2({
@@ -35,6 +36,11 @@ const PriceList = ({currentUser}) => {
     {
       Header: 'Date',
       accessor: 'Date', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>{moment.utc(props.original.DATE).format('YYYY-MM-DD')}</span>
+        );
+      },
     },
     {
       Header: 'Security',
@@ -43,19 +49,35 @@ const PriceList = ({currentUser}) => {
     {
       Header: 'Open Price',
       accessor: 'RefPrice', // String-based value accessors!
+      Cell: (props) => {
+        return <span>{parseFloat(props.original.RefPrice).toFixed(2)}</span>;
+      },
     },
 
     {
       Header: 'Close Price',
       accessor: 'ClosePrice', // String-based value accessors!
+      Cell: (props) => {
+        return <span>{parseFloat(props.original.ClosePrice).toFixed(2)}</span>;
+      },
     },
     {
       Header: '52 Week High Price',
       accessor: 'T52WeekHighPrice', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>{parseFloat(props.original.T52WeekHighPrice).toFixed(2)}</span>
+        );
+      },
     },
     {
       Header: '52 Week Low Price',
       accessor: 'T52WeekLowPrice', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>{parseFloat(props.original.T52WeekLowPrice).toFixed(2)}</span>
+        );
+      },
     },
   ];
 

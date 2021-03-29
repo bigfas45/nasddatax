@@ -224,7 +224,7 @@ const DashboardLiveTable = () => {
                       </div>
                     </div>
                   </Fragment>
-                )
+                );
               }
             })}
           </div>

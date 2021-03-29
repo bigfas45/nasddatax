@@ -131,15 +131,22 @@ const SiderBar = () => {
                       <span className="nk-menu-icon">
                         <em className="icon ni ni-dashlite"></em>
                       </span>
-                      <span className="nk-menu-text">All Brokers Buy Trade</span>
+                      <span className="nk-menu-text">
+                        All Brokers Buy Trade
+                      </span>
                     </a>
                   </li>
                   <li className="nk-menu-item">
-                    <a href="/user/brokers/brokers-sell" className="nk-menu-link">
+                    <a
+                      href="/user/brokers/brokers-sell"
+                      className="nk-menu-link"
+                    >
                       <span className="nk-menu-icon">
                         <em className="icon ni ni-dashlite"></em>
                       </span>
-                      <span className="nk-menu-text">All Brokers Sell Trade</span>
+                      <span className="nk-menu-text">
+                        All Brokers Sell Trade
+                      </span>
                     </a>
                   </li>
                   <li className="nk-menu-item">
@@ -171,7 +178,20 @@ const SiderBar = () => {
                       <span className="nk-menu-text">Trade Log Sell Trade</span>
                     </a>
                   </li>
-                 
+
+                  <li className="nk-menu-heading">
+                    <h6 className="overline-title">Reports</h6>
+                  </li>
+                  <li className="nk-menu-item">
+                    <a href="/user/reports" className="nk-menu-link">
+                      <span className="nk-menu-icon">
+                        <em className="icon ni ni-dashlite"></em>
+                      </span>
+                      <span className="nk-menu-text">
+                       Reports
+                      </span>
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div className="nk-sidebar-footer">

@@ -29,8 +29,10 @@ const ExportToExcel = ({ post2 }) => {
                 <td> {r.from_member_name} </td>
                 <td> {r.member_code}</td>
                 <td> {r.fromCount}</td>
-                <td> {r.fromValue}</td>
-                <td> {r.fromVolume}</td>
+                <td> {parseFloat(r.fromValue).toFixed(0)}</td>
+                <td>
+                  {parseFloat(r.fromVolume).toFixed(0)} 
+                </td>
               </tr>
             );
           })}

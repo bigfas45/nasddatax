@@ -29,15 +29,25 @@ const ExportToExcel = ({post}) => {
         </thead>
         <tbody>
                                             {post.map((r, i) => {
-                                                return(
-                                                    <tr key={i}>
-                                                        <td> {r.member_name} </td>
-                                                        <td> {r.toMember}</td>
-                                                        <td> {r.count}</td>
-                                                        <td> {r.y}</td>
-                                                        <td> {r.volume}</td>
-                                                    </tr>
-                                                )
+                                                return (
+                                                  <tr key={i}>
+                                                    <td> {r.member_name} </td>
+                                                    <td> {r.toMember}</td>
+                                                    <td> {r.count}</td>
+                                                    <td>
+                                                      {' '}
+                                                      {parseFloat(r.y).toFixed(
+                                                        0
+                                                      )}
+                                                    </td>
+                                                    <td>
+                                                      {' '}
+                                                      {parseFloat(
+                                                        r.volume
+                                                      ).toFixed(0)}
+                                                    </td>
+                                                  </tr>
+                                                );
                                                 
                                             })}
                                             

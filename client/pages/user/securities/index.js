@@ -19,9 +19,9 @@ import Loader from 'react-loader-spinner';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import ExportToExcel from '../../../components/user/Exports/ExportToExcel';
+import moment from 'moment';
 
 const Securities = ({ currentUser }) => {
-  
   const [data, setData] = useState({
     securitySymbols: [],
     symbols: '',
@@ -43,7 +43,7 @@ const Securities = ({ currentUser }) => {
   const [SecTrade, setSecTrade] = useState([]);
   const [SecMcap, setSecMcap] = useState([]);
   const [tTtade, setTtrade] = useState([]);
-    const [tVolume, setTvolume] = useState([]);
+  const [tVolume, setTvolume] = useState([]);
   // fetching data for security symbols
   const { doRequest, errors, loading } = useRequest({
     url: `/api/securities/symbol`,
@@ -113,7 +113,7 @@ const Securities = ({ currentUser }) => {
   useEffect(() => {
     currentUser && currentUser.status === 'free'
       ? Router.push('/auth/access-denied')
-      : ''
+      : '';
     doRequest();
   }, []);
 
@@ -123,7 +123,7 @@ const Securities = ({ currentUser }) => {
     doRequest3();
     doRequest4();
     doRequest5();
-     doRequest6();
+    doRequest6();
   };
 
   const searchSubmit = (e) => {
@@ -284,6 +284,11 @@ const Securities = ({ currentUser }) => {
     {
       Header: 'DATE',
       accessor: 'DATE', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>{moment.utc(props.original.DATE).format('YYYY-MM-DD')}</span>
+        );
+      },
     },
 
     {
@@ -293,6 +298,9 @@ const Securities = ({ currentUser }) => {
     {
       Header: 'CLOSE_PRICE',
       accessor: 'CLOSE_PRICE', // String-based value accessors!
+      Cell: (props) => {
+        return <span>{parseFloat(props.original.CLOSE_PRICE).toFixed(2)}</span>;
+      },
     },
     {
       Header: 'DEALS',
@@ -301,10 +309,28 @@ const Securities = ({ currentUser }) => {
     {
       Header: 'VOLUME',
       accessor: 'VOLUME', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>
+            {props.original.VOLUME.toLocaleString(navigator.language, {
+              minimumFractionDigits: 0,
+            })}
+          </span>
+        );
+      },
     },
     {
       Header: 'VALUE',
       accessor: 'VALUE', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <span>
+            {props.original.VALUE.toLocaleString(navigator.language, {
+              minimumFractionDigits: 0,
+            })}
+          </span>
+        );
+      },
     },
   ];
 
@@ -362,29 +388,27 @@ const Securities = ({ currentUser }) => {
                                           <div key={i} class="col-sm-4">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
-                                              
-                                                  <div class="nk-wgw-name">
-                                                    <div class="nk-wgw-icon">
-                                                      <em class="icon ni ni-sign-btc"></em>
-                                                    </div>
-                                                    <h5 class="nk-wgw-title title">
-                                                      MarketCap(₦)
-                                                    </h5>
+                                                <div class="nk-wgw-name">
+                                                  <div class="nk-wgw-icon">
+                                                    <em class="icon ni ni-sign-btc"></em>
                                                   </div>
-                                                  <div class="nk-wgw-balance">
-                                                    <div class="amount">
-                                                      {smcap.mcap.toLocaleString(
-                                                        navigator.language,
-                                                        {
-                                                          minimumFractionDigits: 0,
-                                                        }
-                                                      )}
-                                                      <span class="currency currency-nio">
-                                                        MCAP
-                                                      </span>
-                                                    </div>
+                                                  <h5 class="nk-wgw-title title">
+                                                    MarketCap(₦)
+                                                  </h5>
+                                                </div>
+                                                <div class="nk-wgw-balance">
+                                                  <div class="amount">
+                                                    {smcap.mcap.toLocaleString(
+                                                      navigator.language,
+                                                      {
+                                                        minimumFractionDigits: 0,
+                                                      }
+                                                    )}
+                                                    <span class="currency currency-nio">
+                                                      MCAP
+                                                    </span>
                                                   </div>
-                                                
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
@@ -398,30 +422,28 @@ const Securities = ({ currentUser }) => {
                                           <div key={i} class="col-sm-4">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
-                                               
-                                                  <div class="nk-wgw-name">
-                                                    <div class="nk-wgw-icon">
-                                                      <em class="icon ni ni-sign-btc"></em>
-                                                    </div>
-                                                    <h5 class="nk-wgw-title title">
-                                                      Total Deals
-                                                    </h5>
+                                                <div class="nk-wgw-name">
+                                                  <div class="nk-wgw-icon">
+                                                    <em class="icon ni ni-sign-btc"></em>
                                                   </div>
-                                                  <div class="nk-wgw-balance">
-                                                    <div class="amount">
-                                                      {sums.sumOfDeals.toLocaleString(
-                                                        navigator.language,
-                                                        {
-                                                          minimumFractionDigits: 0,
-                                                        }
-                                                      )}
+                                                  <h5 class="nk-wgw-title title">
+                                                    Total Deals
+                                                  </h5>
+                                                </div>
+                                                <div class="nk-wgw-balance">
+                                                  <div class="amount">
+                                                    {sums.sumOfDeals.toLocaleString(
+                                                      navigator.language,
+                                                      {
+                                                        minimumFractionDigits: 0,
+                                                      }
+                                                    )}
 
-                                                      <span class="currency currency-nio">
-                                                        Deals
-                                                      </span>
-                                                    </div>
+                                                    <span class="currency currency-nio">
+                                                      Deals
+                                                    </span>
                                                   </div>
-                                               
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
@@ -435,40 +457,33 @@ const Securities = ({ currentUser }) => {
                                           <div key={i} class="col-sm-4">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
-                                               
-                                                  <div class="nk-wgw-name">
-                                                    <div class="nk-wgw-icon">
-                                                      <em class="icon ni ni-sign-btc"></em>
-                                                    </div>
-                                                    <h5 class="nk-wgw-title title">
-                                                      Volume Traded
-                                                    </h5>
+                                                <div class="nk-wgw-name">
+                                                  <div class="nk-wgw-icon">
+                                                    <em class="icon ni ni-sign-btc"></em>
                                                   </div>
-                                                  <div class="nk-wgw-balance">
-                                                    <div class="amount">
-                                                      {volume.sumOfVolumes.toLocaleString(
-                                                        navigator.language,
-                                                        {
-                                                          minimumFractionDigits: 0,
-                                                        }
-                                                      )}
-                                                      <span class="currency currency-nio">
-                                                        Volume
-                                                      </span>
-                                                    </div>
+                                                  <h5 class="nk-wgw-title title">
+                                                    Volume Traded
+                                                  </h5>
+                                                </div>
+                                                <div class="nk-wgw-balance">
+                                                  <div class="amount">
+                                                    {volume.sumOfVolumes.toLocaleString(
+                                                      navigator.language,
+                                                      {
+                                                        minimumFractionDigits: 0,
+                                                      }
+                                                    )}
+                                                    <span class="currency currency-nio">
+                                                      Volume
+                                                    </span>
                                                   </div>
-                                               
-                                                
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
                                         </Fragment>
                                       );
                                     })}
-                                   
-
-
-
                                   </div>
                                 ) : (
                                   ''

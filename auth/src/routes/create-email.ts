@@ -14,7 +14,7 @@ const router = express.Router();
 router.post('/api/users/email/create', currentUser,  (req: Request, res: Response) => {
  
   let form = new formidable.IncomingForm();
-  form.keepExtensions = true;
+  // form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
     if (err) {
       return res.status(400).json({ error: 'File could not be uploaded' });

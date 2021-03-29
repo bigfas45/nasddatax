@@ -14,8 +14,8 @@ export const emailPi = async (
   res: Response,
   next: NextFunction
 ) => {
-  let form = new formidable.IncomingForm();
-  form.keepExtensions = true;
+    let form = new formidable.IncomingForm();
+//   form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
     if (err) {
       return res.status(400).json({ error: 'File could not be uploaded' });
@@ -188,6 +188,9 @@ export const emailPi = async (
                                                            
                                                             <p style="text-align: justify">Dear Market Participants,</p>
                                                             <p style="text-align: justify">Kindly be informed that a ${filename} has been upload for ${security} on NASD Dataportal. Find link below</p>
+                                                             <p style="text-align: justify">Report Name: ${filename} ,</p>
+                                                              <p style="text-align: justify">Report Year: ${year} ,</p>
+                                                               <p style="text-align: justify">Security: ${security},</p>
                                                              <p style="text-align: justify"> <a href="nasdfundy.com">nasdfundy.com </a> </p>
 
   

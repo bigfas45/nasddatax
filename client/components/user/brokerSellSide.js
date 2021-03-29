@@ -62,12 +62,22 @@ const BrokerSellSide = () => {
           style: {
             textAlign: 'right',
           },
+          Cell: (props) => {
+            return (
+              <span>{parseFloat(props.original.fromValue).toFixed(0)}</span>
+            );
+          },
         },
         {
           Header: 'VOLUME',
           accessor: 'fromVolume', // String-based value accessors!
           style: {
             textAlign: 'right',
+          },
+          Cell: (props) => {
+            return (
+              <span>{parseFloat(props.original.fromVolume).toFixed(0)}</span>
+            );
           },
         },
       ];

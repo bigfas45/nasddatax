@@ -109,6 +109,34 @@ const SiderBar = () => {
                       <span className="nk-menu-text">Create Report</span>
                     </a>
                   </li>
+
+                  <li className="nk-menu-heading">
+                    <h6 className="overline-title text-primary-alt">EOD</h6>
+                  </li>
+                  <li className="nk-menu-item">
+                    <a href="/admin/eod" className="nk-menu-link">
+                      <span className="nk-menu-icon">
+                        <em className="icon ni ni-bitcoin-cash"></em>
+                      </span>
+                      <span className="nk-menu-text">EOD List</span>
+                    </a>
+                  </li>
+                  <li className="nk-menu-item">
+                    <a href="/admin/pi" className="nk-menu-link">
+                      <span className="nk-menu-icon">
+                        <em className="icon ni ni-bitcoin-cash"></em>
+                      </span>
+                      <span className="nk-menu-text">PI List</span>
+                    </a>
+                  </li>
+                  <li className="nk-menu-item">
+                    <a href="/admin/bod" className="nk-menu-link">
+                      <span className="nk-menu-icon">
+                        <em className="icon ni ni-bitcoin-cash"></em>
+                      </span>
+                      <span className="nk-menu-text">BOD List</span>
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div className="nk-sidebar-footer">

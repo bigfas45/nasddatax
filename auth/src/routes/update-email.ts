@@ -22,7 +22,7 @@ router.put('/api/users/email/:emailId', currentUser, async (req: Request, res: R
     // res.status(200).send(existingEmail);
  
  let form = new formidable.IncomingForm();
-  form.keepExtensions = true;
+  // form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
     if (err) {
       return res.status(400).json({ error: 'File could not be uploaded' });

@@ -22,7 +22,7 @@ router.put('/api/securities/reports/:reportId', currentUser, async (req: Request
     // res.status(200).send(existingReport);
  
  let form = new formidable.IncomingForm();
-  form.keepExtensions = true;
+  // form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
     if (err) {
       return res.status(400).json({ error: 'File could not be uploaded' });

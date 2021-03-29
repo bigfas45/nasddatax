@@ -83,12 +83,18 @@ const Top10Brokers = ({currentUser}) => {
       style: {
         textAlign: 'right',
       },
+      Cell: (props) => {
+        return <span>{parseFloat(props.original.y).toFixed(0)}</span>;
+      },
     },
     {
       Header: 'VOLUME',
       accessor: 'volume', // String-based value accessors!
       style: {
         textAlign: 'right',
+      },
+      Cell: (props) => {
+        return <span>{parseFloat(props.original.volume).toFixed(0)}</span>;
       },
     },
   ];

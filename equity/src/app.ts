@@ -23,6 +23,7 @@ import { PriceListRouter } from './routes/price-list';
 import { YearSummaryRouter } from './routes/year-summary-trades';
 import { SummaryRangeRouter } from './routes/trade-summary-range';
 import { YearSumRouter } from './routes/year-summary-range';
+import { EodRouter } from './routes/eod';
 
 const app = express();
 app.use(json());
@@ -52,6 +53,7 @@ app.use(PriceListRouter);
 app.use(YearSummaryRouter);
 app.use(SummaryRangeRouter);
 app.use(YearSumRouter);
+app.use(EodRouter);
 
 app.get('*', async (req, res ) => {
   throw new NotFoundError();
