@@ -20,6 +20,7 @@ import { EmailSendOpsRouter } from './routes/send-email-marketoperation';
 import { EmailSendPIRouter } from './routes/send-email-pi';
 import { EmailSendImageRouter } from './routes/send-email-image';
 import { EmailSendAllRouter } from './routes/email-all-participant';
+import { UserEmailGetRouter } from './routes/password-reset';
 
 import { errorHandler, NotFoundError } from '@nasddatax/common';
 
@@ -51,7 +52,7 @@ app.use(EmailSendPIRouter);
 app.use(EmailSendImageRouter);
 
 app.use(EmailSendAllRouter);
-
+app.use(UserEmailGetRouter);
 
 app.get('*', async (req, res) => {
   throw new NotFoundError();

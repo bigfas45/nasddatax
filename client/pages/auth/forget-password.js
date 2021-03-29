@@ -13,11 +13,10 @@ const Signin = () => {
   const [data, setData] = useState([]);
 
   const { doRequest2, errors2, loading2, success } = useRequest2({
-    url: '/api/users/signin',
-    method: 'post',
+    url: `/api/users/password-reset/${email}`,
+    method: 'put',
     body: {
-      email,
-      password,
+      email
     },
     onSuccess: (data) => {
       setData(data);
@@ -45,39 +44,17 @@ const Signin = () => {
     );
   };
 
-  const body = () => {
-    return (
-      <Fragment>
-        {' '}
-        <Layout title="Logout... | NASD Data Portal" description="" />
-        <body class="nk-body bg-white npc-general pg-error">
-          <div class="nk-app-root">
-            <div class="nk-main ">
-              <div class="nk-wrap nk-wrap-nosidebar">
-                <div class="nk-content ">
-                  <div class="nk-block nk-block-middle wide-xs mx-auto">
-                    <div class="nk-block-content nk-error-ld text-center">
-                      <h3 class="nk-error-head">Signin</h3>
-                      <h3 class="nk-error-title">
-                        Welcome back {data.firstname}
-                      </h3>
 
-                      <a
-                        href="/user/dashboard"
-                        class="btn btn-lg btn-primary mt-2"
-                      >
-                        Click here to continue....
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </body>
-      </Fragment>
+    const showSuccess = () => (
+      <div class="example-alert" style={{ display: success ? '' : 'none' }}>
+        <div class="alert alert-primary  alert-icon">
+          <em class="icon ni ni-check-circle"></em> <strong>Success!</strong>{' '}
+          Your password has been reset. Kinly check
+          your email for more deatils{' '}
+        </div>
+      </div>
     );
-  };
+
 
   const form = () => {
     return (
@@ -100,14 +77,16 @@ const Signin = () => {
             </a>
           </Link>
         </div>
+        {showSuccess()}
         <div className="card card-bordered">
           <div className="card-inner card-inner-lg">
             <div className="nk-block-head">
               <div className="nk-block-head-content">
-                <h4 className="nk-block-title">Signin</h4>
+                <h4 className="nk-block-title">Reset password</h4>
                 <div className="nk-block-des">
                   <p>
-                    Access the NASD Data portal using your email and passcode.
+                    If you forgot your password, well, then we’ll email you
+                    instructions to reset your password.
                   </p>
                 </div>
               </div>
@@ -129,37 +108,6 @@ const Signin = () => {
                   placeholder="Enter your email address or username"
                 />
               </div>
-              <div className="form-group">
-                <div className="form-label-group">
-                  <label className="form-label" htmlFor="password">
-                    Passcode
-                  </label>
-                  <a
-                    className="link link-primary link-sm"
-                    href="/auth/forget-password"
-                  >
-                    Forgot Code?
-                  </a>
-                </div>
-                <div className="form-control-wrap">
-                  <a
-                    href="#"
-                    className="form-icon form-icon-right passcode-switch"
-                    data-target="password"
-                  >
-                    <em className="passcode-icon icon-show icon ni ni-eye"></em>
-                    <em className="passcode-icon icon-hide icon ni ni-eye-off"></em>
-                  </a>
-                  <input
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    type="password"
-                    className="form-control form-control-lg"
-                    id="password"
-                    placeholder="Enter your passcode"
-                  />
-                </div>
-              </div>
 
               <div className="form-group">
                 {loading2 && loading2 ? (
@@ -172,17 +120,15 @@ const Signin = () => {
                   <input
                     type="submit"
                     className="btn btn-lg btn-primary btn-block"
-                    value="Sign In"
+                    value="Send Reset Link"
                   />
                 )}{' '}
               </div>
               {errors2}
             </form>
-            <div className="form-note-s2 text-center pt-4">
-              {' '}
-              New on our platform?{' '}
-              <a href="html/pages/auths/auth-register-v2.html">
-                Request for an account
+            <div class="form-note-s2 text-center pt-4">
+              <a href="/auth/signin">
+                <strong>Return to login</strong>
               </a>
             </div>
           </div>
@@ -202,7 +148,7 @@ const Signin = () => {
               <div className="nk-content ">
                 <div className="nk-block nk-block-middle nk-auth-body  wide-xs">
                   {/*  */}
-                  {success ? body() : form()}
+                 {form()}
                 </div>
                 <div className="nk-footer nk-auth-footer-full">
                   <div className="container wide-lg">
