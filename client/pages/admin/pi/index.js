@@ -42,56 +42,6 @@ const PI = ({ currentUser }) => {
                 <div className="container-xl wide-lg">
                   <div className="nk-content-body">
                     {/* body goes here  */}
-                    <div className="nk-block-head nk-block-head-sm">
-                      <div className="nk-block-between">
-                        <div className="nk-block-head-content">
-                          <h3 className="nk-block-title page-title">
-                            PI Lists
-                          </h3>
-                          {/* <div className="nk-block-des text-soft">
-                            <p>You have total 2,595 users.</p>
-                          </div> */}
-                        </div>
-                        <div className="nk-block-head-content">
-                          <div className="toggle-wrap nk-block-tools-toggle">
-                            <a
-                              href="#"
-                              className="btn btn-icon btn-trigger toggle-expand mr-n1"
-                              data-target="pageMenu"
-                            >
-                              <em className="icon ni ni-menu-alt-r"></em>
-                            </a>
-                            <div
-                              className="toggle-expand-content"
-                              data-content="pageMenu"
-                            >
-                              <ul className="nk-block-tools g-3">
-                                <li>
-                                  <a
-                                    href="#"
-                                    className="btn btn-white btn-outline-light"
-                                  >
-                                    <em className="icon ni ni-download-cloud"></em>
-                                    <span>Export</span>
-                                  </a>
-                                </li>
-                                <li className="nk-block-tools-opt">
-                                  <div className="drodown">
-                                    <a
-                                      href="#"
-                                      className="dropdown-toggle btn btn-icon btn-primary"
-                                      data-toggle="dropdown"
-                                    >
-                                      <em className="icon ni ni-plus"></em>
-                                    </a>
-                                  </div>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
                     <div className="nk-block">
                       <div className="card card-bordered card-stretch">
@@ -207,81 +157,39 @@ const PI = ({ currentUser }) => {
                                     registration_type
                                   </span>
                                 </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">
-                                    registered_Address
-                                  </span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">rc_number</span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">website</span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">
-                                    date_of_incorporation
-                                  </span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">phone</span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">
-                                    sec_registered
-                                  </span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
+
+                                <div className="nk-tb-col tb-col-lg">
                                   <span className="sub-text">
                                     p_contact_name
                                   </span>
                                 </div>
-                                <div className="nk-tb-col tb-col-sm">
+                                <div className="nk-tb-col tb-col-lg">
                                   <span className="sub-text">
                                     p_contact_phone
                                   </span>
                                 </div>
-                                <div className="nk-tb-col tb-col-sm">
+                                <div className="nk-tb-col tb-col-lg">
                                   <span className="sub-text">
                                     p_contact_email
                                   </span>
                                 </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">
-                                    enq_contact_name
-                                  </span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">
-                                    enq_contact_phone
-                                  </span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">
-                                    enq_email_com
-                                  </span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">
-                                    c_contact_name
-                                  </span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">
-                                    c_contact_phone
-                                  </span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text">
-                                    c_contact_email
-                                  </span>
-                                </div>
-                                <div className="nk-tb-col tb-col-sm">
-                                  <span className="sub-text"></span>
+                               
+                                <div className="nk-tb-col nk-tb-col-tools text-right">
+                                  <div className="dropdown">
+                                    <a
+                                      href="#"
+                                      className="btn btn-xs btn-outline-light btn-icon dropdown-toggle"
+                                      data-toggle="dropdown"
+                                      data-offset="0,5"
+                                    >
+                                      <em className="icon ni ni-plus"></em>
+                                    </a>
+                                    <div className="dropdown-menu dropdown-menu-xs dropdown-menu-right"></div>
+                                  </div>
                                 </div>
                               </div>
 
-                              {data2.map((pi, i) => {
+                              {data2.map((user, i) => {
                                 return (
                                   <div key={i} className="nk-tb-item">
                                     <div className="nk-tb-col nk-tb-col-check">
@@ -299,96 +207,73 @@ const PI = ({ currentUser }) => {
                                     </div>
                                     <div className="nk-tb-col">
                                       <div className="user-card">
+                                        <div className="user-avatar xs bg-success">
+                                          <span>MB</span>
+                                        </div>
                                         <div className="user-name">
                                           <span className="tb-lead">
-                                            {pi.member_name}
+                                            {user.member_name}
                                           </span>
                                         </div>
                                       </div>
                                     </div>
-
+                                    <div className="nk-tb-col tb-col-md">
+                                      <span>{user.member_code}</span>
+                                    </div>
                                     <div className="nk-tb-col tb-col-sm">
-                                      <span>{pi.member_code}</span>
+                                      <span>{user.registration_type}</span>
                                     </div>
 
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                      <span class="tb-status text-success">
-                                        {pi.member_code}
-                                      </span>
+                                    <div className="nk-tb-col tb-col-lg">
+                                      <span>{user.p_contact_name}</span>
                                     </div>
 
+                                    <div className="nk-tb-col">
+                                      <span className="tb-status text-success">
+                                        {user.p_contact_phone}
+                                      </span>
+                                    </div>
+                                    <div className="nk-tb-col">
+                                      <span className="tb-status text-success">
+                                        {user.p_contact_email}
+                                      </span>
+                                    </div>
+                                  
                                     <div className="nk-tb-col nk-tb-col-tools">
                                       <ul className="nk-tb-actions gx-2">
+                                        <li className="nk-tb-action-hidden">
+                                          <a
+                                            href="#"
+                                            className="btn btn-sm btn-icon btn-trigger"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Wallet"
+                                          >
+                                            <em className="icon ni ni-wallet-fill"></em>
+                                          </a>
+                                        </li>
+                                        <li className="nk-tb-action-hidden">
+                                          <a
+                                            href="#"
+                                            className="btn btn-sm btn-icon btn-trigger"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Send Email"
+                                          >
+                                            <em className="icon ni ni-mail-fill"></em>
+                                          </a>
+                                        </li>
+                                        <li className="nk-tb-action-hidden">
+                                          <a
+                                            href="#"
+                                            className="btn btn-sm btn-icon btn-trigger"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Suspend"
+                                          >
+                                            <em className="icon ni ni-user-cross-fill"></em>
+                                          </a>
+                                        </li>
                                         <li>
                                           <div className="drodown">
                                             <a
@@ -404,11 +289,11 @@ const PI = ({ currentUser }) => {
                                                   <a>
                                                     <em className="icon ni ni-eye"></em>
                                                     {/* <Link
-                                                      href="/admin/reports/[update]"
-                                                      as={`/admin/reports/${reports.id}`}
+                                                      href="/admin/users/[user]"
+                                                      as={`/admin/users/${user.id}`}
                                                     > */}
                                                     <a
-                                                      href={`/admin/reports/${pi.id}`}
+                                                      href={`/admin/users/${user.id}`}
                                                     >
                                                       <span>Edit Details</span>
                                                     </a>
@@ -441,7 +326,7 @@ const PI = ({ currentUser }) => {
                 </div>
               </div>
             </div>
-            <Footer />
+            <Footer></Footer>
           </div>
         </div>
       </body>
