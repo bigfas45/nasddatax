@@ -6,8 +6,12 @@ import Header from '../../components/user/header';
 import Footer from '../../components/user/footer';
 import DashboardCard from '../../components/user/dashbaord-card';
 import DashboardLiveTable from '../../components/user/dashboard-live-table';
+import DashboardTab from '../../components/user/DashboardTab';
 
-const Dashboard = ({currentUser}) => {
+
+const Dashboard = ({ currentUser, date }) => {
+
+ 
   return (
     <Fragment>
       <Layout title="User Dashboard | NASD Data Portal" description="" />
@@ -36,13 +40,11 @@ const Dashboard = ({currentUser}) => {
                         </div>
                         <div className="nk-block-head-content">
                           <div className="toggle-wrap nk-block-tools-toggle">
-                           
                             <div
                               className="toggle-expand-content"
                               data-content="pageMenu"
                             >
                               <ul className="nk-block-tools g-3">
-                               
                                 <li className="nk-block-tools-opt">
                                   <div className="drodown">
                                     <a
@@ -89,6 +91,8 @@ const Dashboard = ({currentUser}) => {
 
                         <DashboardCard />
 
+                        {/* Dashboard Tab */}
+                        <DashboardTab date={date.Date} />
                         {/* Live trade card goes here  */}
 
                         <DashboardLiveTable />
@@ -107,7 +111,11 @@ const Dashboard = ({currentUser}) => {
 };
 
 Dashboard.getInitialProps = async (context, client, currentUser) => {
-  return {};
+  const { data } = await client.get(`/api/equity/date`);
+
+
+
+  return { date: data };
 };
 
 export default Dashboard;

@@ -21,10 +21,7 @@ router.post('/api/users/signup', [
       .not()
       .isEmpty()
     .withMessage('Lastname is required'),
-    body('bCode')
-      .not()
-      .isEmpty()
-      .withMessage('bCode is required'),
+   
 
 ],
   validateRequest,email,

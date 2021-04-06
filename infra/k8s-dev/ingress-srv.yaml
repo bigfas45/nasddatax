@@ -26,7 +26,6 @@ spec:
             backend:
               serviceName: securities-srv
               servicePort: 3000
-
           - path: /api/brokers/?(.*)
             backend:
               serviceName: brokers-srv

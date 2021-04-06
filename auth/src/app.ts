@@ -21,6 +21,7 @@ import { EmailSendPIRouter } from './routes/send-email-pi';
 import { EmailSendImageRouter } from './routes/send-email-image';
 import { EmailSendAllRouter } from './routes/email-all-participant';
 import { UserEmailGetRouter } from './routes/password-reset';
+import { UserActivitiesRouter } from './routes/UserActivities';
 
 import { errorHandler, NotFoundError } from '@nasddatax/common';
 
@@ -50,7 +51,7 @@ app.use(EmailGetFileRouter);
 app.use(EmailSendOpsRouter);
 app.use(EmailSendPIRouter);
 app.use(EmailSendImageRouter);
-
+app.use(UserActivitiesRouter);
 app.use(EmailSendAllRouter);
 app.use(UserEmailGetRouter);
 

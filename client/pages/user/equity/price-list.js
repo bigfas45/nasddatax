@@ -36,11 +36,11 @@ const PriceList = ({ currentUser }) => {
     {
       Header: 'Date',
       accessor: 'Date', // String-based value accessors!
-      Cell: (props) => {
-        return (
-          <span>{moment.utc(props.original.DATE).format('YYYY-MM-DD')}</span>
-        );
-      },
+      // Cell: (props) => {
+      //   return (
+      //     <span>{moment.utc(props.original.DATE).format('YYYY-MM-DD')}</span>
+      //   );
+      // },
     },
     {
       Header: 'Security',

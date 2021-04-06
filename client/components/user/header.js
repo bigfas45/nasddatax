@@ -103,19 +103,20 @@ const Header = ({ currentUser }) => {
                     <div className="dropdown-inner">
                       <ul className="link-list">
                         <li>
-                          <a href="#">
+                          <a href="/user/profile/">
                             <em className="icon ni ni-user-alt"></em>
                             <span>View Profile</span>
                           </a>
                         </li>
-                        <li>
-                          <a href="#">
-                            <em className="icon ni ni-setting-alt"></em>
-                            <span>Account Setting</span>
+                        {/* <li>
+                          <a href="/user/profile/">
+                            <em className="icon ni ni-user-alt"></em>
+                            <span>{currentUser.status.toUpperCase()} USER</span>
                           </a>
-                        </li>
+                        </li> */}
+
                         <li>
-                          <a href="#">
+                          <a href="user/profile/activities">
                             <em className="icon ni ni-activity-alt"></em>
                             <span>Login Activity</span>
                           </a>
@@ -134,7 +135,6 @@ const Header = ({ currentUser }) => {
                     </div>
                   </div>
                 </li>
-              
               </ul>
             </div>
           </div>

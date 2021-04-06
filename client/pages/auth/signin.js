@@ -181,7 +181,7 @@ const Signin = () => {
             <div className="form-note-s2 text-center pt-4">
               {' '}
               New on our platform?{' '}
-              <a href="html/pages/auths/auth-register-v2.html">
+              <a href="/auth/signup">
                 Request for an account
               </a>
             </div>

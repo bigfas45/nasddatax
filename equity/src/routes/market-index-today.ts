@@ -15,7 +15,12 @@ router.get('/api/equity/MarketIndexT', currentUser, (req: Request, res: Response
         error: 'not found',
       });
     } else {
-      return res.json(results);
+
+      // @ts-ignore
+        results.forEach(element => {
+         return res.json(element);
+      });
+      // return res.json(results);
     }
   });
 })

@@ -141,21 +141,21 @@ const DashboardCard = () => {
           dealsTextChange = (
             <span className="change up text-danger">
               <em className="icon ni ni-arrow-long-up"></em>
-              {percentageChangeDeals}%
+              {percentageChangeDeals}%<em style={{ fontSize: '9px' }}>MOM</em>
             </span>
           );
         } else if (percentageChangeDeals < 0) {
           dealsTextChange = (
             <span className="change down text-danger">
               <em className="icon ni ni-arrow-long-down"></em>
-              {percentageChangeDeals}%
+              {percentageChangeDeals}%<em style={{ fontSize: '9px' }}>MOM</em>
             </span>
           );
         } else {
           dealsTextChange = (
             <span>
               <em></em>
-              {percentageChangeDeals}%
+              {percentageChangeDeals}%<em style={{ fontSize: '9px' }}>MOM</em>
             </span>
           );
         }
@@ -166,21 +166,21 @@ const DashboardCard = () => {
           VolumeTextChange = (
             <span className="change up text-danger">
               <em className="icon ni ni-arrow-long-up"></em>
-              {percentageChangeVolume}%
+              {percentageChangeVolume}%<em style={{ fontSize: '9px' }}>MOM</em>
             </span>
           );
         } else if (percentageChangeVolume < 0) {
           VolumeTextChange = (
             <span className="change down text-danger">
               <em className="icon ni ni-arrow-long-down"></em>
-              {percentageChangeVolume}%
+              {percentageChangeVolume}%<em style={{ fontSize: '9px' }}>MOM</em>
             </span>
           );
         } else {
           VolumeTextChange = (
             <span>
               <em></em>
-              {percentageChangeVolume}%
+              {percentageChangeVolume}%<em style={{ fontSize: '9px' }}>MOM</em>
             </span>
           );
         }
@@ -191,22 +191,28 @@ const DashboardCard = () => {
           ValueTextChange = (
             <span className="change up text-danger">
               <em className="icon ni ni-arrow-long-up"></em>
-              {percentageChangeValue}%
+              {percentageChangeValue}%<em style={{ fontSize: '9px' }}>MOM</em>
             </span>
           );
         } else if (percentageChangeValue < 0) {
           ValueTextChange = (
-            <span className="change down text-danger">
-              <em className="icon ni ni-arrow-long-down"></em>
-              {percentageChangeValue}%
-            </span>
+            <Fragment>
+              {' '}
+              <span className="change down text-danger">
+                <em className="icon ni ni-arrow-long-down"></em>
+                {percentageChangeValue}%<em style={{ fontSize: '9px' }}>MOM</em>
+              </span>
+            </Fragment>
           );
         } else {
           ValueTextChange = (
-            <span>
-              <em></em>
-              {percentageChangeValue}%
-            </span>
+            <Fragment>
+              <span>
+                <em></em>
+                {percentageChangeValue}%(
+              </span>
+              <em style={{ fontSize: '9px' }}>MOM</em>
+            </Fragment>
           );
         }
       })}
@@ -237,7 +243,8 @@ const DashboardCard = () => {
                 <span className="amount">
                   {' '}
                   {Tdeals ? Tdeals : cardLoading()}{' '}
-                </span>
+                </span>{' '}
+                <em style={{ fontSize: '10px' }}>YTD</em>
                 {/*  */}
                 {dealsTextChange}
               </div>
@@ -287,6 +294,7 @@ const DashboardCard = () => {
                       })
                     : cardLoading()}{' '}
                 </span>
+                <em style={{ fontSize: '10px' }}>YTD</em>
 
                 {VolumeTextChange}
               </div>
@@ -344,6 +352,7 @@ const DashboardCard = () => {
                       })
                     : cardLoading()}{' '}
                 </span>
+                <em style={{ fontSize: '10px' }}>YTD</em>
                 {ValueTextChange}
               </div>
               <div className="invest-data">

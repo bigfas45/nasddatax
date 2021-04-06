@@ -69,3 +69,36 @@ export const updateReports = (ReportsId, report) => {
     });
 };
 
+
+export const updatePi = (ReportsId, report) => {
+  // console.log(name, email, password);
+  return fetch(`/api/brokers/member/${ReportsId}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+    },
+    body: report,
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+
+export const getAdvancers = (date) => {
+  return fetch(`/api/equity/inbox/${date}/${date}`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+
+
+

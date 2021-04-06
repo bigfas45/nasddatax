@@ -526,6 +526,7 @@ const Securities = ({ currentUser }) => {
                                               columns={columns}
                                               filterable
                                               sortable
+                                              
                                               defaultPageSize={10}
                                               showPaginationTop
                                               showPaginationBottom={false}

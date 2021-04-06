@@ -173,7 +173,7 @@ const PI = ({ currentUser }) => {
                                     p_contact_email
                                   </span>
                                 </div>
-                               
+
                                 <div className="nk-tb-col nk-tb-col-tools text-right">
                                   <div className="dropdown">
                                     <a
@@ -238,42 +238,9 @@ const PI = ({ currentUser }) => {
                                         {user.p_contact_email}
                                       </span>
                                     </div>
-                                  
+
                                     <div className="nk-tb-col nk-tb-col-tools">
                                       <ul className="nk-tb-actions gx-2">
-                                        <li className="nk-tb-action-hidden">
-                                          <a
-                                            href="#"
-                                            className="btn btn-sm btn-icon btn-trigger"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Wallet"
-                                          >
-                                            <em className="icon ni ni-wallet-fill"></em>
-                                          </a>
-                                        </li>
-                                        <li className="nk-tb-action-hidden">
-                                          <a
-                                            href="#"
-                                            className="btn btn-sm btn-icon btn-trigger"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Send Email"
-                                          >
-                                            <em className="icon ni ni-mail-fill"></em>
-                                          </a>
-                                        </li>
-                                        <li className="nk-tb-action-hidden">
-                                          <a
-                                            href="#"
-                                            className="btn btn-sm btn-icon btn-trigger"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Suspend"
-                                          >
-                                            <em className="icon ni ni-user-cross-fill"></em>
-                                          </a>
-                                        </li>
                                         <li>
                                           <div className="drodown">
                                             <a
@@ -293,19 +260,10 @@ const PI = ({ currentUser }) => {
                                                       as={`/admin/users/${user.id}`}
                                                     > */}
                                                     <a
-                                                      href={`/admin/users/${user.id}`}
+                                                      href={`/admin/pi/${user.sn}`}
                                                     >
                                                       <span>Edit Details</span>
                                                     </a>
-                                                  </a>
-                                                </li>
-
-                                                <li className="divider"></li>
-
-                                                <li>
-                                                  <a href="#">
-                                                    <em className="icon ni ni-na"></em>
-                                                    <span>Suspend User</span>
                                                   </a>
                                                 </li>
                                               </ul>

@@ -1,10 +1,12 @@
 import express, {Request, Response} from 'express';
 import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
+const RequestIp = require('@supercharge/request-ip')
 
 import {Password} from '../services/password'
 import { BadRequestError, validateRequest } from '@nasddatax/common';
-import {User} from '../models/users'
+import { User } from '../models/users';
+import { LoginActivities } from '../models/login-activities';
 const router = express.Router();
 
 router.post('/api/users/signin', [
@@ -25,6 +27,23 @@ async  (req:Request, res:Response) => {
   if (!passwordsMatch) {
     throw new BadRequestError('invalid credentials');
   }
+
+  const ip = RequestIp.getClientIp(req);
+  const broswer = req.headers['user-agent'];
+ 
+
+
+
+
+  // Login activiies 
+    var d = new Date();
+    const LoginTime = LoginActivities.build({ userId: existingUser.id, date: d, ip, broswer });
+  await LoginTime.save();
+  
+  console.log(LoginTime);
+
+
+
 
   
     // Generate JWT

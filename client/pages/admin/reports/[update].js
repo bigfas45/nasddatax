@@ -150,8 +150,6 @@ const ReportUpdate = ({ currentUser, ReportId }) => {
 
                     <div className="nk-block">
                       <div className="card card-bordered">
-                        
-                       
                         <div className="card-inner card-inner-lg">
                           <div className="nk-block-head">
                             <div className="nk-block-head-content">

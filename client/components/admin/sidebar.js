@@ -130,6 +130,14 @@ const SiderBar = () => {
                     </a>
                   </li>
                   <li className="nk-menu-item">
+                    <a href="/admin/pi/create" className="nk-menu-link">
+                      <span className="nk-menu-icon">
+                        <em className="icon ni ni-bitcoin-cash"></em>
+                      </span>
+                      <span className="nk-menu-text">PI Create</span>
+                    </a>
+                  </li>
+                  <li className="nk-menu-item">
                     <a href="/admin/bod" className="nk-menu-link">
                       <span className="nk-menu-icon">
                         <em className="icon ni ni-bitcoin-cash"></em>

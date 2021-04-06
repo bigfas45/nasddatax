@@ -7,6 +7,8 @@ import Footer from '../../../components/user/footer';
 import useRequest2 from '../../../hooks/use-request2';
 import useRequest3 from '../../../hooks/use-request3';
 import useRequest4 from '../../../hooks/use-request4';
+import useRequest5 from '../../../hooks/use-request5';
+
 import ExportToExcel from '../../../components/user/Exports/ExportToExcelEquityMonthly';
 import Router, { useRouter } from 'next/router';
 import moment from 'moment';
@@ -37,6 +39,16 @@ const Summary = ({ currentUser }) => {
   const [tTtade, setTtrade] = useState([]);
 
   const { securitySymbols, searched, loading, end, start } = data;
+
+    const { doRequest5, errors5, loading5 } = useRequest5({
+      url: `/api/equity/MarketIndexT`,
+      method: 'get',
+      body: {},
+
+      onSuccess: (data) => {
+        setUsi(data);
+      },
+    });
 
   const { doRequest2, errors2, loading2, success } = useRequest2({
     url: `/api/equity/year/summary`,
@@ -82,6 +94,7 @@ const Summary = ({ currentUser }) => {
       ? Router.push('/auth/access-denied')
       : '';
     doRequest2();
+    doRequest5();
   }, []);
 
   const cardLoading = () => {
@@ -141,6 +154,7 @@ const Summary = ({ currentUser }) => {
                         type="text"
                         className="form-control"
                         onChange={handleChange('start')}
+                        placeholder="2021-01-04"
                       />
                       <div className="input-group-prepend">
                         <span className="input-group-text">to</span>
@@ -149,6 +163,7 @@ const Summary = ({ currentUser }) => {
                         type="text"
                         className="form-control"
                         onChange={handleChange('end')}
+                        placeholder="2021-04-01"
                       />
                       <div
                         className="input-group-prepend"
@@ -325,12 +340,12 @@ const Summary = ({ currentUser }) => {
       <Fragment>
         <div className="nk-block">
           <div className="row g-gs">
-            <div className="col-md-3">
+            <div className="col-md-2">
               <div className="card card-bordered card-full">
                 <div className="card-inner">
                   <div className="card-title-group align-start mb-0">
                     <div className="card-title">
-                      <h6 className="subtitle">Total Number of Deals</h6>
+                      <h6 className="subtitle"> Number of Deals</h6>
                     </div>
                     <div className="card-tools">
                       <em
@@ -345,6 +360,7 @@ const Summary = ({ currentUser }) => {
                     <span className="amount">
                       {Tdeals ? Tdeals : cardLoading()}{' '}
                     </span>
+                    <em style={{ fontSize: '11px' }}>YTD</em>
                   </div>
                 </div>
               </div>
@@ -373,6 +389,7 @@ const Summary = ({ currentUser }) => {
                           })
                         : cardLoading()}{' '}
                     </span>
+                    <em style={{ fontSize: '11px' }}>YTD</em>
                   </div>
                 </div>
               </div>
@@ -402,11 +419,12 @@ const Summary = ({ currentUser }) => {
                           })
                         : cardLoading()}{' '}
                     </span>
+                    <em style={{ fontSize: '11px' }}>YTD</em>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-2">
               <div className="card card-bordered card-full">
                 <div className="card-inner">
                   <div className="card-title-group align-start mb-0">
@@ -423,7 +441,34 @@ const Summary = ({ currentUser }) => {
                     </div>
                   </div>
                   <div className="card-amount">
-                    <span className="amount"> 735.84</span>
+                    <span className="amount"> {usi.usi}</span>
+                    <em style={{ fontSize: '11px' }}>YTD</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-2">
+              <div className="card card-bordered card-full">
+                <div className="card-inner">
+                  <div className="card-title-group align-start mb-0">
+                    <div className="card-title">
+                      <h6 className="subtitle">Mkt. CAP (BN)</h6>
+                    </div>
+                    <div className="card-tools">
+                      <em
+                        className="card-hint icon ni ni-help-fill"
+                        data-toggle="tooltip"
+                        data-placement="left"
+                        title="Mkt. Capitalization (BN)"
+                      ></em>
+                    </div>
+                  </div>
+                  <div className="card-amount">
+                    <span className="amount">
+                      {' '}
+                      {(usi.capitalisation / 1000000000).toFixed(2)}
+                    </span>
+                    <em style={{ fontSize: '11px' }}>YTD</em>
                   </div>
                 </div>
               </div>
@@ -447,12 +492,12 @@ const Summary = ({ currentUser }) => {
       <Fragment>
         <div className="nk-block">
           <div className="row g-gs">
-            <div className="col-md-3">
+            <div className="col-md-2">
               <div className="card card-bordered card-full">
                 <div className="card-inner">
                   <div className="card-title-group align-start mb-0">
                     <div className="card-title">
-                      <h6 className="subtitle">Total Number of Deals</h6>
+                      <h6 className="subtitle"> Number of Deals</h6>
                     </div>
                     <div className="card-tools">
                       <em
@@ -528,7 +573,7 @@ const Summary = ({ currentUser }) => {
                 </div>
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-2">
               <div className="card card-bordered card-full">
                 <div className="card-inner">
                   <div className="card-title-group align-start mb-0">
@@ -545,7 +590,33 @@ const Summary = ({ currentUser }) => {
                     </div>
                   </div>
                   <div className="card-amount">
-                    <span className="amount"> 735.84</span>
+                    <span className="amount">{usi.usi}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-2">
+              <div className="card card-bordered card-full">
+                <div className="card-inner">
+                  <div className="card-title-group align-start mb-0">
+                    <div className="card-title">
+                      <h6 className="subtitle">Mkt. CAP (BN)</h6>
+                    </div>
+                    <div className="card-tools">
+                      <em
+                        className="card-hint icon ni ni-help-fill"
+                        data-toggle="tooltip"
+                        data-placement="left"
+                        title="Mkt. Capitalization (BN)"
+                      ></em>
+                    </div>
+                  </div>
+                  <div className="card-amount">
+                    <span className="amount">
+                      {' '}
+                      {(usi.capitalisation / 1000000000).toFixed(2)}
+                    </span>
+                    
                   </div>
                 </div>
               </div>

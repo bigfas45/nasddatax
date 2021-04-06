@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const LandingPage = ({ currentUser }) => {
+const LandingPage = ({ currentUser, dateTicker }) => {
   console.log(currentUser);
   const marketStatus = () => {
     let date2 = new Date().getHours();
@@ -115,7 +115,7 @@ const LandingPage = ({ currentUser }) => {
       <body className="nk-body npc-crypto bg-white has-sidebar">
         {TopLayer()}
         {/* <Nsi /> */}
-        <Ticker />
+        <Ticker date={dateTicker} />
 
         <Highcharts></Highcharts>
       </body>
@@ -124,7 +124,11 @@ const LandingPage = ({ currentUser }) => {
 };
 
 LandingPage.getInitialProps = async (context, client, currentUser) => {
-  return {};
+   const { data } = await client.get(`/api/equity/date`);
+
+
+
+  return { dateTicker: data }
 };
 
 export default LandingPage;

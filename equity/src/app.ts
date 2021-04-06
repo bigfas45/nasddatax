@@ -24,6 +24,10 @@ import { YearSummaryRouter } from './routes/year-summary-trades';
 import { SummaryRangeRouter } from './routes/trade-summary-range';
 import { YearSumRouter } from './routes/year-summary-range';
 import { EodRouter } from './routes/eod';
+import { OrdersRouter } from './routes/market-orders';
+import { DateRouter } from './routes/date';
+import { TopTradeValueRouter } from './routes/top-trade-value';
+import { TopTradeVolumeRouter } from './routes/top-trade-volume';
 
 const app = express();
 app.use(json());
@@ -54,6 +58,10 @@ app.use(YearSummaryRouter);
 app.use(SummaryRangeRouter);
 app.use(YearSumRouter);
 app.use(EodRouter);
+app.use(OrdersRouter);
+app.use(DateRouter);
+app.use(TopTradeValueRouter);
+app.use(TopTradeVolumeRouter);
 
 app.get('*', async (req, res ) => {
   throw new NotFoundError();

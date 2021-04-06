@@ -54,7 +54,6 @@ const userSchema = new mongoose.Schema({
   },
      bCode: {
     type: String,
-    required: true
   },
     userType: {
     type: Number,
@@ -65,7 +64,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     enum: Object.values(PremiumStatus),
     default:PremiumStatus.FreePackage,
-
   },
       expiresAt: {
     type: mongoose.Schema.Types.Date
