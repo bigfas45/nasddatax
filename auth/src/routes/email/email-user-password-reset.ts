@@ -1,5 +1,7 @@
 // require on top
 import express, { Request, Response, NextFunction } from 'express';
+import { User } from '../../models/users';
+import { NotFoundError } from '@nasddatax/common';
 
 const sgMail = require('@sendgrid/mail');
   sgMail.setApiKey(process.env.SENDGRID);
@@ -10,6 +12,12 @@ export const emailPassword = async (
   next: NextFunction
 ) => {
     const { emailId } = req.params;
+
+     const user = await User.findOne({email: emailId});
+
+    if (!user) {
+      throw new NotFoundError();
+    }
 
     // const password = Math.random().toString(36).slice(2);
     // console.log(password);
