@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { User } from '../models/users';
 import { BadRequestError} from '@nasddatax/common'
-import { email } from './email/email-user-loging-details';
+import { email } from './email.ts/email-user-loging-details';
 
 const router = express.Router();
 
