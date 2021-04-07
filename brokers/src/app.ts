@@ -21,7 +21,7 @@ import { IndexConnectRouter } from './routes/connect-care';
 
 import { IndexEmail1Router} from './routes/email-connect-1';
 
-import { UserUpdateRouter} from './routes//update';
+import { UserUpdateRouter} from './routes/update';
 
 
 // import {TradeLogRouter} from './routes/trade-log'
