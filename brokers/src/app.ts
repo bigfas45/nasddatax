@@ -17,6 +17,7 @@ import { DealingMemberGetRouter } from './routes/get-dealing-member';
 import { MyBuyRangeRouter } from './routes/my-buy-tradeRange';
 import { MySellRangeRouter } from './routes/my-sell-trade-range';
 
+import { IndexConnectRouter} from './routes/connect-care';
 
 // import {TradeLogRouter} from './routes/trade-log'
 
@@ -45,6 +46,8 @@ app.use(DealingMemberAddRouter);
 app.use(DealingMemberGetRouter);
 app.use(MyBuyRangeRouter);
 app.use(MySellRangeRouter);
+app.use(IndexConnectRouter);
+
 
 app.get('*', async (req, res ) => {
   throw new NotFoundError();
