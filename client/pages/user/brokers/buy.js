@@ -5,6 +5,8 @@ import SiderBar from '../../../components/user/sidebar';
 import Header from '../../../components/user/header';
 import Footer from '../../../components/user/footer';
 import useRequest3 from '../../../hooks/use-request3';
+import useRequest2 from '../../../hooks/use-request2';
+
 import Loader from 'react-loader-spinner';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
@@ -14,9 +16,18 @@ import Router, { useRouter } from 'next/router';
 
 const Buy = ({ currentUser }) => {
   
+    const [data, setData] = useState({
+      end: '',
+      start: '',
+      results: [],
+      loading: false,
+      searched: false,
+    });
   
+   const { results, searched, loading, end, start } = data;
 
-    const [trades, setTrades] = useState([]);
+    const [search2, setSearch2] = useState(false);
+  const [trades, setTrades] = useState([]);
 
 
    const { doRequest3, errors3, loading3, success3 } = useRequest3({
@@ -25,9 +36,24 @@ const Buy = ({ currentUser }) => {
      body: {},
 
      onSuccess: (data) => {
-       setTrades(data);
+      setData({
+        ...data,
+        results: data,
+      });
      },
    });
+  
+    const { doRequest2, error2, loading2, success2 } = useRequest2({
+      url: `/api/brokers/range/${start}/${end}/${currentUser.bCode}`,
+      method: 'get',
+      body: {},
+
+      onSuccess: (data) => {
+        console.log(data);
+        setTrades(data)
+       setSearch2(true);
+      },
+    });
   
   
   useEffect(() => {
@@ -36,6 +62,69 @@ const Buy = ({ currentUser }) => {
       : '';
     doRequest3();
   }, []);
+
+    const searchData = () => {
+      console.log(start, end);
+      doRequest2();
+    };
+
+    const searchSubmit = (e) => {
+      e.preventDefault();
+      searchData();
+    };
+
+    const handleChange = (name) => (event) => {
+      setData({
+        ...data,
+        [name]: event.target.value,
+        searched: false,
+      });
+       setSearch2(false);
+    };
+
+
+    const datePickerForm = () => {
+      return (
+        <Fragment>
+          <div className="row">
+            <div className="col-lg-6">
+              <div className="card">
+                <div className="card-body">
+                  <form onSubmit={searchSubmit}>
+                    <label>Input your date range to get historic data</label>
+                    <div id="dateragne-picker">
+                      <div className="input-daterange input-group">
+                        <input
+                          type="text"
+                          className="form-control"
+                          onChange={handleChange('start')}
+                          placeholder="20200101"
+                        />
+                        <div className="input-group-prepend">
+                          <span className="input-group-text">TO</span>
+                        </div>
+                        <input
+                          type="text"
+                          className="form-control"
+                          onChange={handleChange('end')}
+                          placeholder="20200131"
+                        />
+                        <div
+                          className="input-group-prepend"
+                          style={{ border: 'none' }}
+                        >
+                          <button className="input-group-text">Search</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Fragment>
+      );
+    };
 
 
   
@@ -149,8 +238,6 @@ const Buy = ({ currentUser }) => {
                                 data-content="pageMenu"
                               >
                                 <ul className="nk-block-tools g-3">
-                                 
-                                  
                                   <li className="nk-block-tools-opt">
                                     <div className="drodown">
                                       <a
@@ -191,38 +278,76 @@ const Buy = ({ currentUser }) => {
                         </div>
                       </div>
                       <div class="nk-block">
+                        {datePickerForm()}
                         <div class="row g-gs">
                           <div class="col-md-12">
                             <div class="card card-bordered card-full">
                               <div class="card-inner">
                                 {showLoading()}
-                                {success3 ? (
-                                  <ReactTable
-                                    data={trades}
-                                    columns={columns}
-                                    filterable
-                                    sortable
-                                    defaultPageSize={5}
-                                    showPaginationTop
-                                    noDataText="Please wait Loading...."
-                                    showPaginationBottom={false}
-                                  >
-                                    {(state, filtredData, instance) => {
-                                      const reactTable = state.pageRows.map(
-                                        (post) => {
-                                          return post._original;
-                                        }
-                                      );
-                                      return (
-                                        <div>
-                                          {filtredData()}
-                                          <ExportToExcel post={reactTable} />
-                                        </div>
-                                      );
-                                    }}
-                                  </ReactTable>
+                                {search2 ? (
+                                  <Fragment>
+                                    <div className="nk-block-des text-soft">
+                                      <p>
+                                        {start} - {end} Trade Data
+                                      </p>
+                                    </div>
+                                    <ReactTable
+                                      data={trades}
+                                      columns={columns}
+                                      filterable
+                                      sortable
+                                      defaultPageSize={5}
+                                      showPaginationTop
+                                      noDataText="Please wait Loading...."
+                                      showPaginationBottom={false}
+                                    >
+                                      {(state, filtredData, instance) => {
+                                        const reactTable = state.pageRows.map(
+                                          (post) => {
+                                            return post._original;
+                                          }
+                                        );
+                                        return (
+                                          <div>
+                                            {filtredData()}
+                                            <ExportToExcel post={reactTable} />
+                                          </div>
+                                        );
+                                      }}
+                                    </ReactTable>
+                                  </Fragment>
                                 ) : (
-                                  ''
+                                  <Fragment>
+                                    <div className="nk-block-des text-soft">
+                                      <p>
+                                       Year To Date Trade Data
+                                      </p>
+                                    </div>
+                                    <ReactTable
+                                      data={results}
+                                      columns={columns}
+                                      filterable
+                                      sortable
+                                      defaultPageSize={5}
+                                      showPaginationTop
+                                      noDataText="Please wait Loading...."
+                                      showPaginationBottom={false}
+                                    >
+                                      {(state, filtredData, instance) => {
+                                        const reactTable = state.pageRows.map(
+                                          (post) => {
+                                            return post._original;
+                                          }
+                                        );
+                                        return (
+                                          <div>
+                                            {filtredData()}
+                                            <ExportToExcel post={reactTable} />
+                                          </div>
+                                        );
+                                      }}
+                                    </ReactTable>
+                                  </Fragment>
                                 )}
                               </div>
                             </div>

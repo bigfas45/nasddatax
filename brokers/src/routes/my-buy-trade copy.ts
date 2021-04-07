@@ -11,6 +11,7 @@ router.get('/api/brokers/my/buy/:code', currentUser, (req: Request, res: Respons
   var startYearDay = new Date(new Date().getFullYear(), 0, 1);
   var momentDate1 = moment(startYearDay);
   var date = momentDate1.format("YYYY");
+  
  let sql =
     " SELECT data.`TO MEMBER` as tomember ,(`TOTAL VALUE`/10000) as value ,(`VOLUME`),dealing_member.member_name,(`PRICE`/10000) as price,`TRADE DATE` as date,`SYMBOL`,`TO ACCOUNT` as toaccount,`FROM ACCOUNT`,`FROM MEMBER` as frommemebr FROM data  INNER JOIN dealing_member ON data.`TO MEMBER`= dealing_member.member_code WHERE `TRADE DATE` >= ? AND  `TO MEMBER` =? ORDER BY `data`.`VOLUME` ASC";
   let query = db.query(sql, [date, code], (err, results) => {
