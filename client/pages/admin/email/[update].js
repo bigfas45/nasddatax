@@ -16,8 +16,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import Loader from 'react-loader-spinner';
 import Router from 'next/router';
 import { updateEmail } from '../../../components/admin/ApiAdmin';
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 
 const EmailUpdate = ({ currentUser, EmailId }) => {
   const [data2, setData] = useState([]);
