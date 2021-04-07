@@ -289,7 +289,7 @@ const Top10Brokers = ({currentUser}) => {
                                       return (
                                         <div>
                                           {filtredData()}
-                                          <ExportToExcel post={reactTable} />
+                                          <ExportToExcel post={reactTable} start={start} end={end} />
                                         </div>
                                       );
                                     }}

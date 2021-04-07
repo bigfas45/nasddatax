@@ -244,6 +244,12 @@ const Performance = ({currentUser}) => {
                                 <div className="nk-tb-col nk-tb-sessions">
                                   <span>Volume traded </span>
                                 </div>
+                                <div className="nk-tb-col nk-tb-sessions">
+                                  <span>Value traded </span>
+                                </div>
+                                <div className="nk-tb-col nk-tb-sessions">
+                                  <span>Deals traded </span>
+                                </div>
                                 <div className="nk-tb-col nk-tb-prev-sessions">
                                   <span>Open Price</span>
                                 </div>
@@ -258,6 +264,16 @@ const Performance = ({currentUser}) => {
                               <div className="nk-tb-item">
                                 <div className="nk-tb-col nk-tb-channel">
                                   <span className="tb-lead">Date</span>
+                                </div>
+                                <div className="nk-tb-col nk-tb-sessions">
+                                  <span className="tb-sub tb-amount">
+                                    <span></span>
+                                  </span>
+                                </div>
+                                <div className="nk-tb-col nk-tb-sessions">
+                                  <span className="tb-sub tb-amount">
+                                    <span></span>
+                                  </span>
                                 </div>
                                 <div className="nk-tb-col nk-tb-sessions">
                                   <span className="tb-sub tb-amount">
@@ -365,6 +381,16 @@ const Performance = ({currentUser}) => {
                                           <span></span>
                                         </span>
                                       </div>
+                                      <div className="nk-tb-col nk-tb-sessions">
+                                        <span className="tb-sub tb-amount">
+                                          <span></span>
+                                        </span>
+                                      </div>
+                                      <div className="nk-tb-col nk-tb-sessions">
+                                        <span className="tb-sub tb-amount">
+                                          <span></span>
+                                        </span>
+                                      </div>
                                       <div className="nk-tb-col nk-tb-prev-sessions">
                                         <span className="tb-sub tb-amount">
                                           <span>{startUsiDate}</span>
@@ -386,6 +412,16 @@ const Performance = ({currentUser}) => {
                                       <div className="nk-tb-col nk-tb-channel">
                                         <span className="tb-lead">
                                           Market Capitalisation (₦ billion)
+                                        </span>
+                                      </div>
+                                      <div className="nk-tb-col nk-tb-sessions">
+                                        <span className="tb-sub tb-amount">
+                                          <span></span>
+                                        </span>
+                                      </div>
+                                      <div className="nk-tb-col nk-tb-sessions">
+                                        <span className="tb-sub tb-amount">
+                                          <span></span>
                                         </span>
                                       </div>
                                       <div className="nk-tb-col nk-tb-sessions">
@@ -448,6 +484,10 @@ const Performance = ({currentUser}) => {
                                   navigator.language,
                                   { minimumFractionDigits: 0 }
                                 );
+                                let value = sec.value.toLocaleString(
+                                  navigator.language,
+                                  { minimumFractionDigits: 0 }
+                                );
                                 let closeprice2 = sec.closeprice2.toLocaleString(
                                   navigator.language,
                                   { minimumFractionDigits: 2 }
@@ -493,6 +533,16 @@ const Performance = ({currentUser}) => {
                                       <div className="nk-tb-col nk-tb-sessions">
                                         <span className="tb-sub tb-amount">
                                           <span>{volume}</span>
+                                        </span>
+                                      </div>
+                                      <div className="nk-tb-col nk-tb-sessions">
+                                        <span className="tb-sub tb-amount">
+                                          <span>{value}</span>
+                                        </span>
+                                      </div>
+                                      <div className="nk-tb-col nk-tb-sessions">
+                                        <span className="tb-sub tb-amount">
+                                          <span>{sec.deals}</span>
                                         </span>
                                       </div>
                                       <div className="nk-tb-col nk-tb-prev-sessions">

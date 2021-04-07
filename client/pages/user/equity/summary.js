@@ -709,6 +709,11 @@ const Summary = ({ currentUser }) => {
                       {showLoading()}
                       {showLoading2()}
                       {datePickerForm()}
+                      <div className="nk-block-head-content">
+                        <div className="nk-block-des text-soft">
+                          { start } - {end}
+                        </div>
+                      </div>
 
                       <div className="nk-block">
                         <div className="row g-gs">
@@ -765,7 +770,7 @@ const Summary = ({ currentUser }) => {
                                         return (
                                           <div>
                                             {filtredData()}
-                                            <ExportToExcel post={reactTable} />
+                                            <ExportToExcel post={reactTable} start={start} end={end} />
                                           </div>
                                         );
                                       }}

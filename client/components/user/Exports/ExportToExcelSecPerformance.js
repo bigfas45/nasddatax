@@ -37,6 +37,8 @@ const ExportToExcelSecPerformance = ({
           <tr style={{ border: '1px solid black' }}>
             <th style={{ border: '1px solid black' }}></th>
             <th style={{ border: '1px solid black' }}>Volume traded</th>
+            <th style={{ border: '1px solid black' }}>Value traded</th>
+            <th style={{ border: '1px solid black' }}>Deals traded</th>
             <th style={{ border: '1px solid black' }}>Open Price</th>
             <th style={{ border: '1px solid black' }}>Close Price</th>
             <th style={{ border: '1px solid black' }}>Gain/loss </th>
@@ -46,6 +48,8 @@ const ExportToExcelSecPerformance = ({
         <thead>
           <tr style={{ border: '1px solid black' }}>
             <th style={{ border: '1px solid black' }}>Date</th>
+            <th style={{ border: '1px solid black' }}></th>
+            <th style={{ border: '1px solid black' }}></th>
             <th style={{ border: '1px solid black' }}></th>
             <th style={{ border: '1px solid black' }}>{start}</th>
             <th style={{ border: '1px solid black' }}>{end}</th>
@@ -130,6 +134,8 @@ const ExportToExcelSecPerformance = ({
                 <tr style={{ border: '1px solid black' }}>
                   <td style={{ border: '1px solid black' }}>NASD OTC index</td>
                   <td style={{ border: '1px solid black' }}></td>
+                  <th style={{ border: '1px solid black' }}></th>
+                  <th style={{ border: '1px solid black' }}></th>
                   <td style={{ border: '1px solid black' }}>{startUsiDate}</td>
                   <td style={{ border: '1px solid black' }}>{endUsiDate}</td>
                   <td style={{ border: '1px solid black' }}>{txtChange}</td>
@@ -138,6 +144,8 @@ const ExportToExcelSecPerformance = ({
                   <td style={{ border: '1px solid black' }}>
                     Market Capitalisation (₦ billion)
                   </td>
+                  <td style={{ border: '1px solid black' }}></td>
+                  <td style={{ border: '1px solid black' }}></td>
                   <td style={{ border: '1px solid black' }}></td>
                   <td style={{ border: '1px solid black' }}>
                     {' '}
@@ -154,6 +162,8 @@ const ExportToExcelSecPerformance = ({
             <td style={{ border: '1px solid black' }}>
               PERFORMANCE BY SECURITY
             </td>
+            <th style={{ border: '1px solid black' }}></th>
+            <th style={{ border: '1px solid black' }}></th>
             <td style={{ border: '1px solid black' }}></td>
             <td style={{ border: '1px solid black' }}></td>
             <td style={{ border: '1px solid black' }}></td>
@@ -163,6 +173,9 @@ const ExportToExcelSecPerformance = ({
           {dataEndDateSecurity.map((sec, i) => {
             let txtpricechange;
             let volume = sec.volume.toLocaleString(navigator.language, {
+              minimumFractionDigits: 0,
+            });
+            let value = sec.value.toLocaleString(navigator.language, {
               minimumFractionDigits: 0,
             });
             let closeprice2 = sec.closeprice2.toLocaleString(
@@ -202,6 +215,8 @@ const ExportToExcelSecPerformance = ({
                     {sec.security_name}
                   </td>
                   <td style={{ border: '1px solid black' }}>{volume}</td>
+                  <td style={{ border: '1px solid black' }}>{value}</td>
+                  <td style={{ border: '1px solid black' }}>{sec.deals}</td>
                   <td style={{ border: '1px solid black' }}>{openprice}</td>
                   <td style={{ border: '1px solid black' }}>{closeprice2}</td>
                   <td style={{ border: '1px solid black' }}>
