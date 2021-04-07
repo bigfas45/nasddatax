@@ -6,7 +6,7 @@ const start = async () => {
 
 
 
- console.log('Starting up...............')
+ console.log('Starting u.............')
 
     if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
