@@ -20,6 +20,7 @@ import { InboxDateRouter } from './routes/indox-trade-date';
 import { InboxDateReportRouter } from './routes/inbox-trade-report';
 import { LivetradeRouter } from './routes/live-trade';
 import { PriceListRouter } from './routes/price-list';
+import { PriceListRangeRouter } from './routes/price-list-range';
 import { YearSummaryRouter } from './routes/year-summary-trades';
 import { SummaryRangeRouter } from './routes/trade-summary-range';
 import { YearSumRouter } from './routes/year-summary-range';
@@ -62,6 +63,7 @@ app.use(OrdersRouter);
 app.use(DateRouter);
 app.use(TopTradeValueRouter);
 app.use(TopTradeVolumeRouter);
+app.use(PriceListRangeRouter);
 
 app.get('*', async (req, res ) => {
   throw new NotFoundError();

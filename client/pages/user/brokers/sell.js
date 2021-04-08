@@ -33,7 +33,10 @@ const Buy = ({ currentUser }) => {
     body: {},
 
     onSuccess: (data) => {
-      setTrades(data);
+         setData({
+           ...data,
+           results: data,
+         });
     },
   });
 

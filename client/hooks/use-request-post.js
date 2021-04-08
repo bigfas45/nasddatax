@@ -1,32 +1,32 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-const useRequestPost = ({ url, method, body, onSuccess }) => {
-  const [errorsPost, seterrorsPost] = useState(null);
-  const [loadingPost, setloadingPost] = useState(false);
+const useRequest1 = ({ url, method, body, onSuccess }) => {
+  const [errors1, setErrors] = useState(null);
+  const [loading1, setLoading] = useState(false);
 
-  const doRequestPost = async (props = {}) => {
+  const doRequest1 = async (props = {}) => {
     try {
-      seterrorsPost(null);
-      setloadingPost(true);
+      setErrors(null);
+      setLoading(true);
       const response = await axios[method](url, {
         ...body,
         ...props,
       });
 
       if (onSuccess) {
-        seterrorsPost('');
-        setloadingPost(false);
+        setErrors('');
+        setLoading(false);
         onSuccess(response.data);
       }
 
       return response.data;
     } catch (err) {
-      setloadingPost(false);
-        console.log({ err });
-      seterrorsPost(
+      setLoading(false);
+      console.log({ err });
+      setErrors(
         <div className="example-alert">
-          {/* {err.response.data.errorsPost.map((err) => (
+          {err.response.data.errors.map((err) => (
             <div
               key={err.message}
               className="alert alert-fill alert-danger alert-dismissible alert-icon"
@@ -35,14 +35,13 @@ const useRequestPost = ({ url, method, body, onSuccess }) => {
               {err.message}
               <button className="close" data-dismiss="alert"></button>
             </div>
-          ))}{' '} */}
+          ))}{' '}
         </div>
       );
     }
-  
   };
 
-  return { doRequestPost, errorsPost, loadingPost };
+  return { doRequest1, errors1, loading1 };
 };
 
-export default useRequestPost;
+export default useRequest1;

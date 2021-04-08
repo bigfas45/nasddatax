@@ -18,6 +18,7 @@ import { reportUpdateRouter } from './routes/update-report';
 import { ReportListRouter } from './routes/reports';
 import { reportGetRouter } from './routes/get-report-id';
 import { ReportReadRouter } from './routes/read-file';
+import { SecuritySumValuesRouter } from './routes/securities-sum-value';
 
 
 const app = express();
@@ -44,8 +45,9 @@ app.use(ReportsRouter);
 app.use(reportUpdateRouter);
 app.use(reportGetRouter);
 app.use(ReportReadRouter);
-
 app.use(ReportListRouter);
+app.use(SecuritySumValuesRouter);
+
 
 app.get('*', async (req, res) => {
   throw new NotFoundError();

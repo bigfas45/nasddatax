@@ -5,6 +5,8 @@ import SiderBar from '../../../components/user/sidebar';
 import Header from '../../../components/user/header';
 import Footer from '../../../components/user/footer';
 import useRequest2 from '../../../hooks/use-request2';
+import useRequest3 from '../../../hooks/use-request3';
+
 import ExportToExcel from '../../../components/user/Exports/ExportToExcelPriceList2';
 import Loader from 'react-loader-spinner';
 import ReactTable from 'react-table-6';
@@ -13,17 +15,42 @@ import Router, { useRouter } from 'next/router';
 import moment from 'moment';
 
 const PriceList = ({ currentUser }) => {
-  const [data, setData] = useState([]);
+  const [data2, setData2] = useState([]);
 
+  const [data, setData] = useState({
+    end: '',
+    start: '',
+    results: [],
+    loading: false,
+    searched: false,
+  });
+
+  const { results, searched, loading, end, start } = data;
+  const [search2, setSearch2] = useState(false);
   const { doRequest2, errors2, loading2, success } = useRequest2({
     url: `/api/equity/price/list`,
     method: 'get',
     body: {},
 
     onSuccess: (data) => {
-      setData(data);
+     setData({
+       ...data,
+       results: data,
+     });
     },
   });
+
+   const { doRequest3, error3, loading3, success3 } = useRequest3({
+     url: `/api/equity/price/list/${start}/${end}`,
+     method: 'get',
+     body: {},
+
+     onSuccess: (data) => {
+       
+       setData2(data);
+       setSearch2(true);
+     },
+   });
 
   useEffect(() => {
     currentUser && currentUser.status === 'free'
@@ -32,15 +59,76 @@ const PriceList = ({ currentUser }) => {
     doRequest2();
   }, []);
 
+  const searchData = () => {
+    console.log(start, end);
+    doRequest3();
+  };
+
+  const searchSubmit = (e) => {
+    e.preventDefault();
+    searchData();
+  };
+
+  const handleChange = (name) => (event) => {
+    setData({
+      ...data,
+      [name]: event.target.value,
+      searched: false,
+    });
+    setSearch2(false);
+  };
+  const datePickerForm = () => {
+    return (
+      <Fragment>
+        <div className="row">
+          <div className="col-lg-6">
+            <div className="card">
+              <div className="card-body">
+                <form onSubmit={searchSubmit}>
+                  <label>Daterange Picker</label>
+                  <div id="dateragne-picker">
+                    <div className="input-daterange input-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        onChange={handleChange('start')}
+                        placeholder="20200101"
+                      />
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">TO</span>
+                      </div>
+                      <input
+                        type="text"
+                        className="form-control"
+                        onChange={handleChange('end')}
+                        placeholder="20200131"
+                      />
+                      <div
+                        className="input-group-prepend"
+                        style={{ border: 'none' }}
+                      >
+                        <button className="input-group-text">Search</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Fragment>
+    );
+  };
+
   const columns = [
     {
       Header: 'Date',
       accessor: 'Date', // String-based value accessors!
-      // Cell: (props) => {
-      //   return (
-      //     <span>{moment.utc(props.original.DATE).format('YYYY-MM-DD')}</span>
-      //   );
-      // },
+      Cell: (props) => {
+        return (
+          <span>{moment.utc(props.original.Date).format('YYYY-MM-DD')}</span>
+        );
+      },
     },
     {
       Header: 'Security',
@@ -82,7 +170,8 @@ const PriceList = ({ currentUser }) => {
   ];
 
   const showLoading = () =>
-    loading2 && (
+    loading2 ||
+    (loading3 && (
       <div className="text-center">
         <Loader
           type="ThreeDots"
@@ -92,7 +181,7 @@ const PriceList = ({ currentUser }) => {
           timeout={1000000} //3 secs
         />
       </div>
-    );
+    ));
 
   return (
     <Fragment>
@@ -176,12 +265,21 @@ const PriceList = ({ currentUser }) => {
                         <div class="row g-gs">
                           <div class="col-md-12">
                             <div class="card card-bordered card-full">
+                              <div class="card-inner">{datePickerForm()}</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="nk-block">
+                        <div class="row g-gs">
+                          <div class="col-md-12">
+                            <div class="card card-bordered card-full">
                               <div class="card-inner">
                                 {showLoading()}
 
-                                {success ? (
+                                {search2 ? (
                                   <ReactTable
-                                    data={data}
+                                    data={data2}
                                     columns={columns}
                                     filterable
                                     sortable
@@ -205,7 +303,30 @@ const PriceList = ({ currentUser }) => {
                                     }}
                                   </ReactTable>
                                 ) : (
-                                  ''
+                                  <ReactTable
+                                    data={results}
+                                    columns={columns}
+                                    filterable
+                                    sortable
+                                    defaultPageSize={20}
+                                    showPaginationTop
+                                    noDataText={'Loading Please Wait...'}
+                                    showPaginationBottom={false}
+                                  >
+                                    {(state, filtredData, instance) => {
+                                      const reactTable = state.pageRows.map(
+                                        (post) => {
+                                          return post._original;
+                                        }
+                                      );
+                                      return (
+                                        <div>
+                                          {filtredData()}
+                                          <ExportToExcel post={reactTable} />
+                                        </div>
+                                      );
+                                    }}
+                                  </ReactTable>
                                 )}
                               </div>
                             </div>

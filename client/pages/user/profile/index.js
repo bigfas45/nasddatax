@@ -300,7 +300,7 @@ const Profile = ({ currentUser }) => {
                             <em className="icon ni ni-cross-sm"></em>
                           </a>
                           <div className="modal-body modal-body-lg">
-                            <h5 className="title">Update Profile</h5>
+                            <h5 className="title">Update Password</h5>
                             <ul className="nk-nav nav nav-tabs">
                               <li className="nav-item">
                                 <a
@@ -333,6 +333,7 @@ const Profile = ({ currentUser }) => {
                                             setFirstname(e.target.value)
                                           }
                                           placeholder="Enter Full name"
+                                          readOnly
                                         />
                                       </div>
                                     </div>
@@ -353,6 +354,7 @@ const Profile = ({ currentUser }) => {
                                             setLastName(e.target.value)
                                           }
                                           placeholder="Enter display name"
+                                          readOnly
                                         />
                                       </div>
                                     </div>
@@ -371,6 +373,7 @@ const Profile = ({ currentUser }) => {
                                           onChange={(e) =>
                                             setEmail(e.target.value)
                                           }
+                                          readOnly
                                         />
                                       </div>
                                     </div>
@@ -409,7 +412,7 @@ const Profile = ({ currentUser }) => {
                                           <input
                                             type="submit"
                                             className="btn btn-lg btn-primary btn-block"
-                                            value="Update profile"
+                                            value="Update Password"
                                           />
                                         )}{' '}
                                       </div>

@@ -5,6 +5,8 @@ import SiderBar from '../../../components/user/sidebar';
 import Header from '../../../components/user/header';
 import Footer from '../../../components/user/footer';
 import useRequest from '../../../hooks/use-request';
+import useRequest1 from '../../../hooks/use-request-post';
+
 import useRequest2 from '../../../hooks/use-request2';
 import useRequest3 from '../../../hooks/use-request3';
 import useRequest4 from '../../../hooks/use-request4';
@@ -20,6 +22,7 @@ import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import ExportToExcel from '../../../components/user/Exports/ExportToExcel';
 import moment from 'moment';
+import MarketDepth from '../../../components/user/Market-depth'
 
 const Securities = ({ currentUser }) => {
   const [data, setData] = useState({
@@ -44,6 +47,8 @@ const Securities = ({ currentUser }) => {
   const [SecMcap, setSecMcap] = useState([]);
   const [tTtade, setTtrade] = useState([]);
   const [tVolume, setTvolume] = useState([]);
+    const [tValue, setTvalue] = useState([]);
+
   // fetching data for security symbols
   const { doRequest, errors, loading } = useRequest({
     url: `/api/securities/symbol`,
@@ -110,6 +115,17 @@ const Securities = ({ currentUser }) => {
     },
   });
 
+  // fetching data for security Total value traded
+  const { doRequest1, errors1, loading1 } = useRequest1({
+    url: `/api/securities/trades/value/${symbols}`,
+    method: 'get',
+    body: {},
+
+    onSuccess: (data) => {
+      setTvalue(data);
+    },
+  });
+
   useEffect(() => {
     currentUser && currentUser.status === 'free'
       ? Router.push('/auth/access-denied')
@@ -124,6 +140,7 @@ const Securities = ({ currentUser }) => {
     doRequest4();
     doRequest5();
     doRequest6();
+    doRequest1();
   };
 
   const searchSubmit = (e) => {
@@ -385,7 +402,7 @@ const Securities = ({ currentUser }) => {
                                     {SecMcap.map((smcap, i) => {
                                       return (
                                         <Fragment>
-                                          <div key={i} class="col-sm-4">
+                                          <div key={i} class="col-sm-3">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
                                                 <div class="nk-wgw-name">
@@ -419,7 +436,7 @@ const Securities = ({ currentUser }) => {
                                     {tTtade.map((sums, i) => {
                                       return (
                                         <Fragment>
-                                          <div key={i} class="col-sm-4">
+                                          <div key={i} class="col-sm-3">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
                                                 <div class="nk-wgw-name">
@@ -454,7 +471,7 @@ const Securities = ({ currentUser }) => {
                                     {tVolume.map((volume, i) => {
                                       return (
                                         <Fragment>
-                                          <div key={i} class="col-sm-4">
+                                          <div key={i} class="col-sm-3">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
                                                 <div class="nk-wgw-name">
@@ -484,12 +501,51 @@ const Securities = ({ currentUser }) => {
                                         </Fragment>
                                       );
                                     })}
+
+                                    {tValue.map((value, i) => {
+                                      return (
+                                        <Fragment>
+                                          <div key={i} class="col-sm-3">
+                                            <div class="card bg-light">
+                                              <div class="nk-wgw sm">
+                                                <div class="nk-wgw-name">
+                                                  <div class="nk-wgw-icon">
+                                                    <em class="icon ni ni-sign-btc"></em>
+                                                  </div>
+                                                  <h5 class="nk-wgw-title title">
+                                                    Value Traded
+                                                  </h5>
+                                                </div>
+                                                <div class="nk-wgw-balance">
+                                                  <div class="amount">
+                                                    {value.sumOfValues.toLocaleString(
+                                                      navigator.language,
+                                                      {
+                                                        minimumFractionDigits: 0,
+                                                      }
+                                                    )}
+                                                    <span class="currency currency-nio">
+                                                      Value
+                                                    </span>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </Fragment>
+                                      );
+                                    })}
                                   </div>
                                 ) : (
                                   ''
                                 )}
 
                                 <hr className="preview-hr" />
+{/* 
+                                <MarketDepth />
+
+                                <hr className="preview-hr" /> */}
+
                                 <span className="preview-title-lg overline-title">
                                   Price chart
                                   {showLoading()}
@@ -526,7 +582,6 @@ const Securities = ({ currentUser }) => {
                                               columns={columns}
                                               filterable
                                               sortable
-                                              
                                               defaultPageSize={10}
                                               showPaginationTop
                                               showPaginationBottom={false}

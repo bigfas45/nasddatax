@@ -16,8 +16,7 @@ export const email = async (
     
  
 
-    const user = await User.findById(id);
-
+ const user = await User.findOne({email: id});
     if (!user) {
       throw new NotFoundError();
     }

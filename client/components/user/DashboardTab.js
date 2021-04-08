@@ -9,7 +9,7 @@ import TopTradeByVolume from '../../components/user/TopTradeByVolumeCard'
 import TopTradeByValueCard from '../../components/user/TopTradeByValueCard';
 import Advancers from '../../components/user/Advancer';
 import Decliner from '../../components/user/Decliner';
-
+import MarketDepth from '../../components/user/Market-depth'
 
 const DashboardTab = ({ date }) => {
 
@@ -324,62 +324,7 @@ const DashboardTab = ({ date }) => {
    };
 
 
-  const MarketDepth = () => {
-    return (
-      <Fragment>
-        <div className="nk-block nk-block-lg">
-          <div className="nk-block-head nk-block-head">
-            <div className="nk-block-head-content">
-              <h4 className="nk-block-title">OTC Market Depth Report</h4>
-              <div className="nk-block-des">
-                <p>
-                  Culpa dolor voluptate do laboris laboris irure reprehenderit
-                  id incididunt duis pariatur mollit aute magna pariatur
-                  consectetur. Eu veniam duis non ut dolor deserunt commodo et
-                  minim in quis laboris ipsum velit id veniam. Quis ut
-                  consectetur adipisicing
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            className="card card-preview"
-            style={{ overflow: 'scroll', height: '300px' }}
-          >
-            <div className="card-inner">
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">orderdate</th>
-                    <th scope="col">security</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">TimeinForce</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {state.map((orders, i) => {
-                    count++;
-                    return (
-                      <tr key={i}>
-                        <th scope="row">{count}</th>
-                        <td>{orders.orderdate}</td>
-                        <td>{orders.security}</td>
-                        <td>{orders.Quantity}</td>
-                        <td>{orders.Price}</td>
-                        <td>{orders.TimeinForce}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </Fragment>
-    );
-  };
+
 
   const Otc = () => {
     return (
@@ -527,7 +472,8 @@ const DashboardTab = ({ date }) => {
                     </ul>
                     <div className="tab-content">
                       <div className="tab-pane active" id="tabItem1">
-                        {MarketDepth()}
+                        
+                        <MarketDepth />
                       </div>
                       <div className="tab-pane" id="tabItem2">
                         {Otc()}

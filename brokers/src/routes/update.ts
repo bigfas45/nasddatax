@@ -29,7 +29,7 @@ router.put(
       notice,
     } = req.body;
     const userId = req.params.userid;
-    const user = await User.findById(userId);
+    const user = await User.findOne({email: userId});
 
     if (!user) {
       throw new NotFoundError();
