@@ -187,9 +187,23 @@ const SiderBar = () => {
                       <span className="nk-menu-icon">
                         <em className="icon ni ni-dashlite"></em>
                       </span>
-                      <span className="nk-menu-text">
-                       Reports
+                      <span className="nk-menu-text">Reports</span>
+                    </a>
+                  </li>
+                  <li className="nk-menu-item">
+                    <a href="/user/reports/corporate-action" className="nk-menu-link">
+                      <span className="nk-menu-icon">
+                        <em className="icon ni ni-dashlite"></em>
                       </span>
+                      <span className="nk-menu-text">Corporate Action</span>
+                    </a>
+                  </li>
+                   <li className="nk-menu-item">
+                    <a href="/user/reports/bonds" className="nk-menu-link">
+                      <span className="nk-menu-icon">
+                        <em className="icon ni ni-dashlite"></em>
+                      </span>
+                      <span className="nk-menu-text">Bonds</span>
                     </a>
                   </li>
                 </ul>

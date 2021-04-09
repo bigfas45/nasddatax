@@ -29,11 +29,8 @@ const MarketDepth = () => {
                 <h4 className="nk-block-title">OTC Market Depth Report</h4>
                 <div className="nk-block-des">
                   <p>
-                    Culpa dolor voluptate do laboris laboris irure reprehenderit
-                    id incididunt duis pariatur mollit aute magna pariatur
-                    consectetur. Eu veniam duis non ut dolor deserunt commodo et
-                    minim in quis laboris ipsum velit id veniam. Quis ut
-                    consectetur adipisicing
+                    Current outstanding bids and offers on the NASD OTC
+                    Securities Exchange.
                   </p>
                 </div>
               </div>

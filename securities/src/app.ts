@@ -19,6 +19,8 @@ import { ReportListRouter } from './routes/reports';
 import { reportGetRouter } from './routes/get-report-id';
 import { ReportReadRouter } from './routes/read-file';
 import { SecuritySumValuesRouter } from './routes/securities-sum-value';
+import { CorporateActionRouter } from './routes/corporate_actions';
+import { BondsRouter } from './routes/bonds';
 
 
 const app = express();
@@ -47,6 +49,8 @@ app.use(reportGetRouter);
 app.use(ReportReadRouter);
 app.use(ReportListRouter);
 app.use(SecuritySumValuesRouter);
+app.use(CorporateActionRouter);
+app.use(BondsRouter);
 
 
 app.get('*', async (req, res) => {

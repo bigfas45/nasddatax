@@ -4,157 +4,82 @@ import Layout from '../../../components/layout';
 import SiderBar from '../../../components/user/sidebar';
 import Header from '../../../components/user/header';
 import Footer from '../../../components/user/footer';
-import useRequest3 from '../../../hooks/use-request3';
+import useRequest2 from '../../../hooks/use-request2';
+import ExportToExcelEquity from '../../../components/user/Exports/ExportToExcelEquity';
 import Loader from 'react-loader-spinner';
 import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
-import ExportToExcel from '../../../components/user/Exports/ExportToExcelBrokersTopTrades';
 import Router, { useRouter } from 'next/router';
+import moment from 'moment';
 
-const Top10Brokers = ({currentUser}) => {
-  const [data, setData] = useState({
-    end: '',
-    start: '',
-    results: [],
-    loading: false,
-    searched: false,
-  });
+const Equity = ({ currentUser }) => {
+  const [data, setData] = useState([]);
 
-  const { results, searched, loading, end, start } = data;
-
-  const [trade, setTrade] = useState([]);
-
-  const { doRequest3, errors3, loading3, success3 } = useRequest3({
-    url: `/api/brokers/top10/${start}/${end}`,
+  const { doRequest2, errors2, loading2, success } = useRequest2({
+    url: `/api/securities/bonds`,
     method: 'get',
     body: {},
 
     onSuccess: (data) => {
-      setTrade(data);
+      setData(data);
     },
   });
 
   useEffect(() => {
-     currentUser && currentUser.status === 'free'
-       ? Router.push('/auth/access-denied')
-       : '';
-  }, [])
-
-  const searchData = () => {
-    console.log(start, end);
-    doRequest3();
-  };
-
-  const searchSubmit = (e) => {
-    e.preventDefault();
-    searchData();
-  };
-
-  const handleChange = (name) => (event) => {
-    setData({
-      ...data,
-      [name]: event.target.value,
-      searched: false,
-    });
-  };
+    currentUser && currentUser.status === 'free'
+      ? Router.push('/auth/access-denied')
+      : '';
+    doRequest2();
+  }, []);
 
   const columns = [
     {
-      Header: 'PI',
-      accessor: 'member_name', // String-based value accessors!
+      Header: 'Trade Date',
+      accessor: 'trade_date', // String-based value accessors!
+    },
+
+    {
+      Header: 'Security',
+      accessor: 'security', // String-based value accessors!
     },
     {
-      Header: 'PI CODE',
-      accessor: 'toMember', // String-based value accessors!
-      style: {
-        textAlign: 'center',
-      },
+      Header: 'Value Traded',
+      accessor: 'value_traded', // String-based value accessors!
     },
     {
-      Header: 'DEALS',
-      accessor: 'count', // String-based value accessors!
-      style: {
-        textAlign: 'right',
-      },
+      Header: 'Buy Firm',
+      accessor: 'buy_firm', // String-based value accessors!
     },
     {
-      Header: 'VALUE',
-      accessor: 'y', // String-based value accessors!
-      style: {
-        textAlign: 'right',
-      },
-      Cell: (props) => {
-        return <span>{parseFloat(props.original.y).toFixed(0)}</span>;
-      },
+      Header: 'Buy Fees',
+      accessor: 'buy_fees', // String-based value accessors!
     },
     {
-      Header: 'VOLUME',
-      accessor: 'volume', // String-based value accessors!
-      style: {
-        textAlign: 'right',
-      },
-      Cell: (props) => {
-        return <span>{parseFloat(props.original.volume).toFixed(0)}</span>;
-      },
+      Header: 'Sell Firm',
+      accessor: 'sell_firm', // String-based value accessors!
+    },
+    {
+      Header: 'Sell Fees',
+      accessor: 'sell_fees', // String-based value accessors!
+    },
+    {
+      Header: 'Total Fees',
+      accessor: 'total_fees', // String-based value accessors!
     },
   ];
 
   const showLoading = () =>
-    loading3 && (
+    loading2 && (
       <div className="text-center">
         <Loader
           type="ThreeDots"
           color="#00BFFF"
           height={100}
           width={100}
-          timeout={1000000}
-          //3 secs
+          timeout={1000000} //3 secs
         />
       </div>
     );
-
-  const datePickerForm = () => {
-    return (
-      <Fragment>
-        <div className="row">
-          <div className="col-lg-6">
-            <div className="card">
-              <div className="card-body">
-                <form onSubmit={searchSubmit}>
-                  <label>Daterange Picker</label>
-                  <div id="dateragne-picker">
-                    <div className="input-daterange input-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        onChange={handleChange('start')}
-                        placeholder="20200101"
-                      />
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">TO</span>
-                      </div>
-                      <input
-                        type="text"
-                        className="form-control"
-                        onChange={handleChange('end')}
-                        placeholder="20200131"
-                      />
-                      <div
-                        className="input-group-prepend"
-                        style={{ border: 'none' }}
-                      >
-                        <button className="input-group-text">Search</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Fragment>
-    );
-  };
 
   return (
     <Fragment>
@@ -175,14 +100,10 @@ const Top10Brokers = ({currentUser}) => {
                         <div className="nk-block-between">
                           <div className="nk-block-head-content">
                             <h3 className="nk-block-title page-title">
-                              Brokers Performance Report
+                              Bonds
                             </h3>
                             <div className="nk-block-des text-soft">
-                              <p>
-                                {' '}
-                                Enter a date range to generate all brokers
-                                performance report for the period
-                              </p>
+                              <p>Welcome to Bonds Dashboard</p>
                             </div>
                           </div>
                           <div className="nk-block-head-content">
@@ -199,24 +120,6 @@ const Top10Brokers = ({currentUser}) => {
                                 data-content="pageMenu"
                               >
                                 <ul className="nk-block-tools g-3">
-                                  <li>
-                                    <a
-                                      href="#"
-                                      className="btn btn-white btn-dim btn-outline-primary"
-                                    >
-                                      <em className="icon ni ni-download-cloud"></em>
-                                      <span>Export</span>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      className="btn btn-white btn-dim btn-outline-primary"
-                                    >
-                                      <em className="icon ni ni-reports"></em>
-                                      <span>Reports</span>
-                                    </a>
-                                  </li>
                                   <li className="nk-block-tools-opt">
                                     <div className="drodown">
                                       <a
@@ -260,28 +163,16 @@ const Top10Brokers = ({currentUser}) => {
                         <div class="row g-gs">
                           <div class="col-md-12">
                             <div class="card card-bordered card-full">
-                              <div class="card-inner">{datePickerForm()}</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="nk-block">
-                        <div class="row g-gs">
-                          <div class="col-md-12">
-                            <div class="card card-bordered card-full">
                               <div class="card-inner">
-                                {' '}
                                 {showLoading()}
-                                {success3 ? (
+                                {success ? (
                                   <ReactTable
-                                    data={trade}
+                                    data={data}
                                     columns={columns}
                                     filterable
                                     sortable
-                                    defaultPageSize={20}
+                                    defaultPageSize={10}
                                     showPaginationTop
-                                    noDataText="Please wait Loading...."
                                     showPaginationBottom={false}
                                   >
                                     {(state, filtredData, instance) => {
@@ -290,20 +181,11 @@ const Top10Brokers = ({currentUser}) => {
                                           return post._original;
                                         }
                                       );
-                                      return (
-                                        <div>
-                                          {filtredData()}
-                                          <ExportToExcel
-                                            post={reactTable}
-                                            start={start}
-                                            end={end}
-                                          />
-                                        </div>
-                                      );
+                                      return <div>{filtredData()}</div>;
                                     }}
                                   </ReactTable>
                                 ) : (
-                                  showLoading()
+                                  ''
                                 )}
                               </div>
                             </div>
@@ -322,4 +204,4 @@ const Top10Brokers = ({currentUser}) => {
   );
 };
 
-export default Top10Brokers;
+export default Equity;

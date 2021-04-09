@@ -337,11 +337,11 @@ const DashboardTab = ({ date }) => {
               </h4>
               <div className="nk-block-des">
                 <p>
-                  Culpa dolor voluptate do laboris laboris irure reprehenderit
+                  {/* Culpa dolor voluptate do laboris laboris irure reprehenderit
                   id incididunt duis pariatur mollit aute magna pariatur
                   consectetur. Eu veniam duis non ut dolor deserunt commodo et
                   minim in quis laboris ipsum velit id veniam. Quis ut
-                  consectetur adipisicing
+                  consectetur adipisicing */}
                 </p>
               </div>
             </div>
@@ -437,7 +437,7 @@ const DashboardTab = ({ date }) => {
                           data-toggle="tab"
                           href="#tabItem3"
                         >
-                          Top Trades By Volume(YTD)
+                          Top Trades By Volume (YTD)
                         </a>
                       </li>
                       <li className="nav-item">
@@ -446,7 +446,7 @@ const DashboardTab = ({ date }) => {
                           data-toggle="tab"
                           href="#tabItem4"
                         >
-                          Top Trades By Value(YTD)
+                          Top Trades By Value (YTD)
                         </a>
                       </li>
 
