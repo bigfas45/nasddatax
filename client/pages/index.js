@@ -9,6 +9,8 @@ import Highcharts from '../components/HighChart';
 import Link from 'next/link';
 
 
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
