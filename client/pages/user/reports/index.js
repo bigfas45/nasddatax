@@ -279,7 +279,7 @@ const Reports = ({ currentUser }) => {
                                       <span class="tb-status text-success">
                                         <a
                                           target="_blank"
-                                          href={`https://nasddatax.dev/api/securities/report/read/${reports.id}`}
+                                          href={`/api/securities/report/read/${reports.id}`}
                                         >
                                           Download
                                         </a>
