@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: securities-mongo-depl
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app:  securities-mongo
