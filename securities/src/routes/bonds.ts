@@ -18,9 +18,10 @@ router.get('/api/securities/bonds', currentUser, (req: Request, res: Response) =
     } else {
       return res.json(results);
     }
+    
   });
-
-  db.destroy();
+ db.end();
+ 
 
 })
 

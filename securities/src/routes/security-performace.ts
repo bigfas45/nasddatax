@@ -18,7 +18,7 @@ const { date1, date2 } = req.params
       return res.json(results);
     }
   });
-db.destroy();
+db.end();
 })
 
 export { router as PerformanceRouter };
