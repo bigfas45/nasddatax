@@ -20,6 +20,8 @@ router.get('/api/securities/bonds', currentUser, (req: Request, res: Response) =
     }
   });
 
+  db.destroy();
+
 })
 
 export { router as BondsRouter };

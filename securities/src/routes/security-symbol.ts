@@ -18,7 +18,7 @@ router.get('/api/securities/symbol', currentUser, (req: Request, res: Response) 
       return res.json(results);
     }
   });
-
+db.destroy();
 })
 
 export { router as SymbolRouter };

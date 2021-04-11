@@ -20,7 +20,7 @@ const { date } = req.params
       return res.json(results);
     }
   });
-
+db.destroy();
 })
 
 export { router as PerformanceEndRouter };

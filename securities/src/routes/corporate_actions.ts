@@ -19,7 +19,7 @@ router.get('/api/securities/corporate/action', currentUser, (req: Request, res: 
       return res.json(results);
     }
   });
-
+db.destroy();
 })
 
 export { router as CorporateActionRouter };
