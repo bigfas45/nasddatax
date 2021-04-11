@@ -19,7 +19,6 @@ router.get('/api/securities/trades/volume/:symbol', currentUser, (req: Request, 
       return res.json(results);
     }
   });
-db.end();
 })
 
 export { router as SecuritySumVolumeRouter };

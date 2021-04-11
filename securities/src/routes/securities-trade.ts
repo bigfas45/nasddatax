@@ -19,7 +19,6 @@ router.get('/api/securities/trades/:symbol', currentUser, (req: Request, res: Re
       return res.json(results);
     }
   });
-db.end();
 })
 
 export { router as TradeRouter };

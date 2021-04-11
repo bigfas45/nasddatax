@@ -19,7 +19,6 @@ router.get('/api/securities/mcap/:symbol', currentUser, (req: Request, res: Resp
       return res.json(results);
     }
   });
-db.end();
 })
 
 export { router as SecurityMcapRouter };

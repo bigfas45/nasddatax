@@ -18,7 +18,6 @@ const { date } = req.params
       return res.json(results);
     }
   });
-db.end();
 })
 
 export { router as PerformanceStartRouter };

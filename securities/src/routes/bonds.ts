@@ -20,7 +20,6 @@ router.get('/api/securities/bonds', currentUser, (req: Request, res: Response) =
     }
     
   });
- db.end();
  
 
 })

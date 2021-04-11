@@ -19,7 +19,6 @@ router.get('/api/securities/trades/value/:symbol', currentUser, (req: Request, r
       return res.json(results);
     }
   });
-db.end();
 })
 
 export { router as SecuritySumValuesRouter };
