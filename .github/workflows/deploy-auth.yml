@@ -21,5 +21,6 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save nasddatax
       - run: kubectl rollout restart deployment auth-depl
+      
 
       
