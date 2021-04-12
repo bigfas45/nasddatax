@@ -52,8 +52,12 @@ const user = User.build({name,
     relation,
     notice });
   await user.save();
+
+  console.log(user)
   
-   res.status(201).send(user);
+  res.status(201).send(user);
+  
+  
 
 });
 
