@@ -28,7 +28,7 @@ router.post('/api/brokers/connect', async (req: Request, res: Response) => {
 
 
 
-  const existingUser = await User.findOne({ email });
+  const existingUser = await User.findOne({ email: email });
   
     if (existingUser) {
      
