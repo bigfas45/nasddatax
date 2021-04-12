@@ -29,7 +29,7 @@ export const emailImage = async (
 
 
     
-  let sql = "SELECT * FROM `pi` WHERE `email`='marketoperations@nasdng.com'";
+  let sql = "SELECT * FROM `pi` ";
   // @ts-ignore
   let query = db.query(sql, (err, results) => {
     if (err || !results) {
