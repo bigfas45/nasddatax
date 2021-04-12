@@ -78,7 +78,7 @@ export const emailPassword = async (
                                     <p style="margin-bottom: 10px;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;">Your account password has been successfully reset on NASD Data Portal System.</p>
                                     <p style="margin-bottom: 10px;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;">Please find below details for your account.</p>
                                     
-                                    <p style="color: black;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;"><b style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;">PORTAL LINK : <a href="https://www.nasdfundy.com/" style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;text-decoration: none;">https://www.nasdfundy.com/</a> </b></p>
+                                    <p style="color: black;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;"><b style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;">PORTAL LINK : <a href="https://www.nasddatax.com/" style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;text-decoration: none;">https://www.nasddatax.com/</a> </b></p>
 
                                      <p style="color: black;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;"><b style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;"> EMAIL :  ${emailId} </b></p>
 
