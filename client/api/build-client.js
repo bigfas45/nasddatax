@@ -6,7 +6,7 @@ const buildClient = ({ req }) => {
 
     return axios.create({
       //  baseURL:  'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
-      baseURL: 'http://www.nasddatax.com/',
+      baseURL: 'https://www.nasddatax.com/',
       headers: req.headers,
     });
   } else {
