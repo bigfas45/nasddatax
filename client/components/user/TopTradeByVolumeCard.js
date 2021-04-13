@@ -28,13 +28,7 @@ const TopTradeByVolume = () => {
             <div className="nk-block-head-content">
               <h4 className="nk-block-title">Top Trades By Volume(YTD)</h4>
               <div className="nk-block-des">
-                <p>
-                  Culpa dolor voluptate do laboris laboris irure reprehenderit
-                  id incididunt duis pariatur mollit aute magna pariatur
-                  consectetur. Eu veniam duis non ut dolor deserunt commodo et
-                  minim in quis laboris ipsum velit id veniam. Quis ut
-                  consectetur adipisicing
-                </p>
+               
               </div>
             </div>
           </div>
