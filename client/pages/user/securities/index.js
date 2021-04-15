@@ -127,7 +127,6 @@ const Securities = ({ currentUser }) => {
   });
 
   useEffect(() => {
-    
     currentUser && currentUser.status === 'free'
       ? Router.push('/auth/access-denied')
       : '';
