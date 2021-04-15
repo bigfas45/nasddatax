@@ -22,8 +22,7 @@ import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import ExportToExcel from '../../../components/user/Exports/ExportToExcel';
 import moment from 'moment';
-import MarketDepth from '../../../components/user/Market-depth'
-
+import MarketDepth from '../../../components/user/Market-depth';
 const Securities = ({ currentUser }) => {
   const [data, setData] = useState({
     securitySymbols: [],
@@ -47,7 +46,7 @@ const Securities = ({ currentUser }) => {
   const [SecMcap, setSecMcap] = useState([]);
   const [tTtade, setTtrade] = useState([]);
   const [tVolume, setTvolume] = useState([]);
-    const [tValue, setTvalue] = useState([]);
+  const [tValue, setTvalue] = useState([]);
 
   // fetching data for security symbols
   const { doRequest, errors, loading } = useRequest({
@@ -62,7 +61,7 @@ const Securities = ({ currentUser }) => {
 
   // fetching data for price and volume chart
   const { doRequest2, errors2, loading2, success } = useRequest2({
-    url: `/api/securities/trades/${symbols}`,
+    url: `/api/securities/trades/SDNGXGROUP`,
     method: 'get',
     body: {},
 
@@ -73,7 +72,7 @@ const Securities = ({ currentUser }) => {
 
   // fetching data for security trade
   const { doRequest3, errors3, loading3, success3 } = useRequest3({
-    url: `/api/securities/trades/${symbols}`,
+    url: `/api/securities/trades/SDNGXGROUP`,
     method: 'get',
     body: {},
 
@@ -84,7 +83,7 @@ const Securities = ({ currentUser }) => {
 
   // fetching data for security marketcap
   const { doRequest4, errors4, loading4, success4 } = useRequest4({
-    url: `/api/securities/mcap/${symbols}`,
+    url: `/api/securities/mcap/SDNGXGROUP`,
     method: 'get',
     body: {},
 
@@ -95,7 +94,7 @@ const Securities = ({ currentUser }) => {
 
   // fetching data for security Total trades
   const { doRequest5, errors5, loading5, success5 } = useRequest5({
-    url: `/api/securities/trades/sum/${symbols}`,
+    url: `/api/securities/trades/sum/SDNGXGROUP`,
     method: 'get',
     body: {},
 
@@ -106,7 +105,7 @@ const Securities = ({ currentUser }) => {
 
   // fetching data for security Total volume traded
   const { doRequest6, errors6, loading6, success6 } = useRequest6({
-    url: `/api/securities/trades/volume/${symbols}`,
+    url: `/api/securities/trades/volume/SDNGXGROUP`,
     method: 'get',
     body: {},
 
@@ -117,7 +116,7 @@ const Securities = ({ currentUser }) => {
 
   // fetching data for security Total value traded
   const { doRequest1, errors1, loading1 } = useRequest1({
-    url: `/api/securities/trades/value/${symbols}`,
+    url: `/api/securities/trades/value/SDNGXGROUP`,
     method: 'get',
     body: {},
 
@@ -127,61 +126,22 @@ const Securities = ({ currentUser }) => {
   });
 
   useEffect(() => {
-    currentUser && currentUser.status === 'free'
-      ? Router.push('/auth/access-denied')
-      : '';
+   
     doRequest();
+     doRequest2();
+     doRequest3();
+     doRequest4();
+     doRequest5();
+     doRequest6();
+     doRequest1();
   }, []);
 
-  const searchData = () => {
-    setData({ ...data, error: false, loading: true });
-    doRequest2();
-    doRequest3();
-    doRequest4();
-    doRequest5();
-    doRequest6();
-    doRequest1();
-  };
 
-  const searchSubmit = (e) => {
-    e.preventDefault();
 
-    searchData();
-  };
+ 
 
-  const handleChange = (name) => (event) => {
-    setData({ ...data, [name]: event.target.value, searched: false });
-  };
+  
 
-  const searchForm = () => {
-    return (
-      <form onSubmit={searchSubmit}>
-        <span className="input-group-text">
-          <div className="input-group input-group" style={{ height: '10%' }}>
-            <div className="input-group-prepend">
-              <select className="btn mr-2" onChange={handleChange('symbols')}>
-                <option value="All">Pick Security Symbol</option>
-                {securitySymbols.map((s, i) => (
-                  <option key={i} value={s.symbol}>
-                    {s.securityName}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {/* <input
-              type="search"
-              className="form-control"
-              placeholder="Search by name"
-              onChange={handleChange('search')}
-            ></input> */}
-          </div>
-          <div className="input-group-prepend" style={{ border: 'none' }}>
-            <button className="input-group-text">Search</button>
-          </div>
-        </span>
-      </form>
-    );
-  };
 
   // Highchart data
 
@@ -319,7 +279,8 @@ const Securities = ({ currentUser }) => {
         return <span>{parseFloat(props.original.open).toFixed(2)}</span>;
       },
     },
-    {
+
+     {
       Header: 'CLOSE_PRICE',
       accessor: 'CLOSE_PRICE', // String-based value accessors!
       Cell: (props) => {
@@ -391,17 +352,10 @@ const Securities = ({ currentUser }) => {
                                 <span className="preview-title-lg overline-title">
                                   Security Preview
                                 </span>
-                                <div className="row gy-6">
-                                  <div className="col-sm-12">
-                                    <div className="form-group">
-                                      {searchForm()}
-                                    </div>
-                                  </div>
-                                </div>
 
                                 <hr className="preview-hr" />
                                 <span className="preview-title-lg overline-title">
-                                  {symbols ? symbols : 'Symbol'}
+                                  {symbols ? symbols : 'SDNGXGROUP'}
                                   {showLoading()}
                                 </span>
                                 {success4 ? (
@@ -548,7 +502,7 @@ const Securities = ({ currentUser }) => {
                                 )}
 
                                 <hr className="preview-hr" />
-{/* 
+                                {/* 
                                 <MarketDepth />
 
                                 <hr className="preview-hr" /> */}
