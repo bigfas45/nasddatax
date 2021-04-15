@@ -5,8 +5,9 @@ import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import ExportToExcel from '../../components/user/Exports/ExportToExcelBrokersSell';
 import Loader from 'react-loader-spinner';
+import Router, { useRouter } from 'next/router';
 
-const BrokerSellSide = () => {
+const BrokerSellSide = ({currentUser}) => {
      const [sell, setSell] = useState([]);
 
       const { doRequest3, errors3, loading3, success3 } = useRequest3({
@@ -19,7 +20,8 @@ const BrokerSellSide = () => {
         },
       });
 
-      useEffect(() => {
+  useEffect(() => {
+         currentUser === null ? Router.push('/auth/redirect-login') : '';
         doRequest3();
       }, []);
   

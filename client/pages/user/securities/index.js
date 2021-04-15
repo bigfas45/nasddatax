@@ -6,7 +6,6 @@ import Header from '../../../components/user/header';
 import Footer from '../../../components/user/footer';
 import useRequest from '../../../hooks/use-request';
 import useRequest1 from '../../../hooks/use-request-post';
-
 import useRequest2 from '../../../hooks/use-request2';
 import useRequest3 from '../../../hooks/use-request3';
 import useRequest4 from '../../../hooks/use-request4';
@@ -127,10 +126,14 @@ const Securities = ({ currentUser }) => {
   });
 
   useEffect(() => {
-    
+
+    currentUser === null ? Router.push('/auth/redirect-login') : '';
+
     currentUser && currentUser.status === 'free'
       ? Router.push('/auth/access-denied')
       : '';
+    
+    
     doRequest();
   }, []);
 

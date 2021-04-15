@@ -29,7 +29,9 @@ const Reports = ({ currentUser }) => {
      },
    });
 
-   useEffect(() => {
+  useEffect(() => {
+    currentUser === null ? Router.push('/auth/redirect-login') : '';
+    
     currentUser && currentUser.status === 'free'
       ? Router.push('/auth/access-denied')
       : '';

@@ -15,6 +15,8 @@ import ExportToExcel from '../../../components/user/Exports/ExportToExcelBrokers
 import Router, { useRouter } from 'next/router';
 
 const Buy = ({ currentUser }) => {
+
+
   const [data, setData] = useState({
     end: '',
     start: '',
@@ -29,7 +31,7 @@ const Buy = ({ currentUser }) => {
   const [trades, setTrades] = useState([]);
 
   const { doRequest3, errors3, loading3, success3 } = useRequest3({
-    url: `/api/brokers/my/buy/${currentUser.bCode}`,
+    url: `/api/brokers/my/buy/${currentUser ? currentUser.bCode : ''}`,
     method: 'get',
     body: {},
 
@@ -42,7 +44,9 @@ const Buy = ({ currentUser }) => {
   });
 
   const { doRequest2, error2, loading2, success2 } = useRequest2({
-    url: `/api/brokers/range/${start}/${end}/${currentUser.bCode}`,
+    url: `/api/brokers/range/${start}/${end}/${
+      currentUser ? currentUser.bCode : '' 
+    }`,
     method: 'get',
     body: {},
 
@@ -54,6 +58,8 @@ const Buy = ({ currentUser }) => {
   });
 
   useEffect(() => {
+    currentUser === null ? Router.push('/auth/redirect-login') : '';
+    
     currentUser && currentUser.status === 'free'
       ? Router.push('/auth/access-denied')
       : '';

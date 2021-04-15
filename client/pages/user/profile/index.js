@@ -15,7 +15,7 @@ const Profile = ({ currentUser }) => {
     const [password, setPassword] = useState('');
 
   const { doRequest3, errors3, loading3, success3 } = useRequest3({
-    url: `/api/users/${currentUser.id}`,
+    url: `/api/users/${currentUser ? currentUser.id : ''}`,
     method: 'put',
     body: {
       email,
@@ -29,9 +29,10 @@ const Profile = ({ currentUser }) => {
   });
 
   useEffect(() => {
-    setEmail(currentUser.email);
-    setFirstname(currentUser.firstname);
-    setLastName(currentUser.lastname);
+     currentUser === null ? Router.push('/auth/redirect-login') : '';
+    setEmail(currentUser ? currentUser.email : '');
+    setFirstname(currentUser ? currentUser.firstname: '');
+    setLastName(currentUser ? currentUser.lastname: '');
   }, []);
 
   const onSubmit = async (event) => {
@@ -118,8 +119,12 @@ const Profile = ({ currentUser }) => {
                                             Full Name
                                           </span>
                                           <span className="data-value">
-                                            {currentUser.firstname}{' '}
-                                            {currentUser.lastname}
+                                            {currentUser
+                                              ? currentUser.firstname
+                                              : ''}{' '}
+                                            {currentUser
+                                              ? currentUser.lastname
+                                              : ''}
                                           </span>
                                         </div>
                                         <div className="data-col data-col-end">
@@ -138,7 +143,9 @@ const Profile = ({ currentUser }) => {
                                             Display Name
                                           </span>
                                           <span className="data-value">
-                                            {currentUser.firstname}{' '}
+                                            {currentUser
+                                              ? currentUser.firstname
+                                              : ''}{' '}
                                           </span>
                                         </div>
                                         <div className="data-col data-col-end">
@@ -153,7 +160,9 @@ const Profile = ({ currentUser }) => {
                                             Email
                                           </span>
                                           <span className="data-value">
-                                            {currentUser.email}{' '}
+                                            {currentUser
+                                              ? currentUser.email
+                                              : ''}{' '}
                                           </span>
                                         </div>
                                         <div className="data-col data-col-end">
@@ -172,7 +181,9 @@ const Profile = ({ currentUser }) => {
                                             Broker Code
                                           </span>
                                           <span className="data-value text-soft">
-                                            {currentUser.bCode}{' '}
+                                            {currentUser
+                                              ? currentUser.bCode
+                                              : ''}{' '}
                                           </span>
                                         </div>
                                         <div className="data-col data-col-end">
@@ -193,9 +204,10 @@ const Profile = ({ currentUser }) => {
                                             User Type
                                           </span>
                                           <span className="data-value">
-                                            {currentUser.userType === 1
+                                            {currentUser ? currentUser.userType ===
+                                            1
                                               ? 'Broker'
-                                              : 'Admin'}{' '}
+                                              : 'Admin' : ''}{' '}
                                           </span>
                                         </div>
                                         <div className="data-col data-col-end">
@@ -215,7 +227,9 @@ const Profile = ({ currentUser }) => {
                                             Status
                                           </span>
                                           <span className="data-value text-soft">
-                                            {currentUser.status}{' '}
+                                            {currentUser
+                                              ? currentUser.status
+                                              : ''}{' '}
                                           </span>
                                         </div>
                                         <div className="data-col data-col-end">
@@ -241,16 +255,24 @@ const Profile = ({ currentUser }) => {
                                       <div className="user-card">
                                         <div className="user-avatar bg-primary">
                                           <span>
-                                            {currentUser.firstname.charAt(0)}{' '}
-                                            {currentUser.lastname.charAt(0)}
+                                            {currentUser
+                                              ? currentUser.firstname.charAt(0)
+                                              : ''}{' '}
+                                            {currentUser
+                                              ? currentUser.lastname.charAt(0)
+                                              : ''}
                                           </span>
                                         </div>
                                         <div className="user-info">
                                           <span className="lead-text">
-                                            {currentUser.firstname}
+                                            {currentUser
+                                              ? currentUser.firstname
+                                              : ''}
                                           </span>
                                           <span className="sub-text">
-                                            {currentUser.email}
+                                            {currentUser
+                                              ? currentUser.email
+                                              : ''}
                                           </span>
                                         </div>
                                       </div>

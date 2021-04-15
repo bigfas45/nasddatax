@@ -7,6 +7,7 @@ import Footer from '../../../components/user/footer';
 import useRequest from '../../../hooks/use-request';
 import useRequest2 from '../../../hooks/use-request2';
 import useRequest3 from '../../../hooks/use-request3';
+import Router, { useRouter } from 'next/router';
 
 import Moment from 'moment';
 import Link from 'next/link';
@@ -51,6 +52,7 @@ const InboxTrade = ({ inbox_date, currentUser }) => {
   });
 
   useEffect(() => {
+     currentUser === null ? Router.push('/auth/redirect-login') : '';
     doRequest();
     doRequest2();
     doRequest3();

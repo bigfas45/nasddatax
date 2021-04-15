@@ -1,4 +1,4 @@
-import { useState, Fragment, React } from 'react';
+import { useState, Fragment, React, useEffect } from 'react';
 import Ticker from '../../components/ticker';
 import Layout from '../../components/layout';
 import SiderBar from '../../components/user/sidebar';
@@ -7,9 +7,15 @@ import Footer from '../../components/user/footer';
 import DashboardCard from '../../components/user/dashbaord-card';
 import DashboardLiveTable from '../../components/user/dashboard-live-table';
 import DashboardTab from '../../components/user/DashboardTab';
+import Router, { useRouter } from 'next/router';
 
 
 const Dashboard = ({ currentUser, date }) => {
+
+
+  useEffect(() => {
+     currentUser === null ? Router.push('/auth/redirect-login') : '';
+  }, [])
 
  
   return (

@@ -7,6 +7,7 @@ import Footer from '../../../components/user/footer';
 import useRequest from '../../../hooks/use-request';
 import Moment from 'moment';
 import Link from 'next/link';
+import Router, { useRouter } from 'next/router';
 
 const Inbox = ({currentUser}) => {
   const [inbox, setInbox] = useState([]);
@@ -22,6 +23,7 @@ const Inbox = ({currentUser}) => {
   });
 
   useEffect(() => {
+     currentUser === null ? Router.push('/auth/redirect-login') : '';
     doRequest();
   }, []);
 

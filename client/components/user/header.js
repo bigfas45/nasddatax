@@ -67,7 +67,11 @@ const Header = ({ currentUser }) => {
                         <div className="user-status">
                           {currentUser && currentUser.userType === 0
                             ? 'Broker'
-                            : 'Administrator'}
+                            : ''}
+
+                          {currentUser && currentUser.userType === 1
+                            ? 'Administrator'
+                            : ''}
                         </div>
                         <div className="user-name dropdown-indicator">
                           {currentUser && currentUser.firstname}

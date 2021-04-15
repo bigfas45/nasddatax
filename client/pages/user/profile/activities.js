@@ -7,26 +7,24 @@ import Footer from '../../../components/user/footer';
 import useRequest3 from '../../../hooks/use-request3';
 import Loader from 'react-loader-spinner';
 import Router from 'next/router';
-import moment from 'moment'
+import moment from 'moment';
 
 const Activities = ({ currentUser }) => {
   const [data, setData] = useState([]);
 
+  const { doRequest3, errors3, loading3, success3 } = useRequest3({
+    url: `/api/users/activities/${currentUser ? currentUser.id : ''}`,
+    method: 'get',
+    body: {},
+    onSuccess: (data) => {
+      setData(data);
+    },
+  });
 
-   const { doRequest3, errors3, loading3, success3 } = useRequest3({
-     url: `/api/users/activities/${currentUser.id}`,
-     method: 'get',
-     body: {
-      
-     },
-     onSuccess: (data) => {
-     setData(data)
-     },
-   });
-  
   useEffect(() => {
+    currentUser === null ? Router.push('/auth/redirect-login') : '';
     doRequest3();
-  }, [])
+  }, []);
 
   return (
     <Fragment>
@@ -58,8 +56,8 @@ const Activities = ({ currentUser }) => {
                                         </h4>
                                         <div className="nk-block-des">
                                           <p>
-                                            Here is your last login
-                                            activities log.{' '}
+                                            Here is your last login activities
+                                            log.{' '}
                                             <span className="text-soft">
                                               <em className="icon ni ni-info"></em>
                                             </span>
@@ -128,15 +126,10 @@ const Activities = ({ currentUser }) => {
                                                       )}
                                                   </span>
                                                 </td>
-                                              
                                               </tr>
                                             </Fragment>
                                           );
                                         })}
-                                       
-                               
-                                
-                                      
                                       </tbody>
                                     </table>
                                   </div>
@@ -155,16 +148,22 @@ const Activities = ({ currentUser }) => {
                                       <div className="user-card">
                                         <div className="user-avatar bg-primary">
                                           <span>
-                                            {currentUser.firstname.charAt(0)}{' '}
-                                            {currentUser.lastname.charAt(0)}
+                                            {currentUser
+                                              ? currentUser.firstname.charAt(0)
+                                              : ''}{' '}
+                                            {currentUser
+                                              ? currentUser.lastname.charAt(0)
+                                              : ''}
                                           </span>
                                         </div>
                                         <div className="user-info">
                                           <span className="lead-text">
-                                            {currentUser.firstname}
+                                            {currentUser
+                                              ? currentUser.firstname
+                                              : ''}
                                           </span>
                                           <span className="sub-text">
-                                            {currentUser.email}
+                                            {currentUser?currentUser.email:''}
                                           </span>
                                         </div>
                                       </div>
