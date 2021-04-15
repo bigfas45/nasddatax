@@ -31,7 +31,7 @@ export const emailPi = async (
  
 
     
-  let sql = "SELECT * FROM `pi` WHERE `email`='afasina@nasdng.com'";
+  let sql = "SELECT * FROM `pi`";
   // @ts-ignore
   let query = db.query(sql, (err, results) => {
     if (err || !results) {
