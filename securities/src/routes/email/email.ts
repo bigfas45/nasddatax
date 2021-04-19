@@ -47,7 +47,7 @@ export const emailPi = async (
           
              const emailData = {
       from: 'marketoperations@nasdng.com',
-      to: `${val.email}`,
+      to: `afasina@nasdng.com`,
       cc: 'marketreports@nasdng.com',
       subject: `${filename}`,
                  html: `
