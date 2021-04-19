@@ -47,7 +47,7 @@ export const emailPi = async (
           
              const emailData = {
       from: 'marketoperations@nasdng.com',
-      to: `afasina@nasdng.com`,
+      to: `${val.email}`,
       cc: 'marketreports@nasdng.com',
       subject: `${filename}`,
                  html: `
@@ -187,7 +187,7 @@ export const emailPi = async (
                                                                 <div>
                                                            
                                                             <p style="text-align: justify">Dear Market Participants,</p>
-                                                            <p style="text-align: justify">Kindly be informed that ${filename} (Annual/Quarterly Report) has been upload on NASD Dataportal. Find the link below</p>
+                                                            <p style="text-align: justify">Kindly be informed that ${filename} (Annual/Quarterly Report) has been upload on NASD Dataportal. Find the link below.</p>
                                                              <p style="text-align: justify">Report Name: ${filename},</p>
                                                               <p style="text-align: justify">Report Year: ${year},</p>
                                                                <p style="text-align: justify">Security: ${security},</p>
