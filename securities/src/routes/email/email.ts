@@ -187,11 +187,11 @@ export const emailPi = async (
                                                                 <div>
                                                            
                                                             <p style="text-align: justify">Dear Market Participants,</p>
-                                                            <p style="text-align: justify">Kindly be informed that a ${filename} has been upload for ${security} on NASD Dataportal. Find link below</p>
-                                                             <p style="text-align: justify">Report Name: ${filename} ,</p>
-                                                              <p style="text-align: justify">Report Year: ${year} ,</p>
+                                                            <p style="text-align: justify">Kindly be informed that ${filename} (Annual/Quarterly Report) has been upload on NASD Dataportal. Find the link below</p>
+                                                             <p style="text-align: justify">Report Name: ${filename},</p>
+                                                              <p style="text-align: justify">Report Year: ${year},</p>
                                                                <p style="text-align: justify">Security: ${security},</p>
-                                                             <p style="text-align: justify"> <a href="www.nasddatax.com">www.nasddatax.com </a> </p>
+                                                             <p style="text-align: justify"> <a href="https://www.nasddatax.com/user/reports">https://www.nasddatax.com/user/reports </a> </p>
 
   
                                                           </div>
