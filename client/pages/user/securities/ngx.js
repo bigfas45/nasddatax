@@ -382,7 +382,9 @@ const Securities = ({ currentUser }) => {
                                                         minimumFractionDigits: 0,
                                                       }
                                                     )}
-                                                    <span class="currency currency-nio"></span>
+                                                    <span class="currency currency-nio">
+                                                      Shares
+                                                    </span>
                                                   </div>
                                                 </div>
                                               </div>
