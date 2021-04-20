@@ -376,21 +376,18 @@ const Securities = ({ currentUser }) => {
                                                 </div>
                                                 <div class="nk-wgw-balance">
                                                   <div class="amount">
-                                                    {IssH.mcap.toLocaleString(
+                                                    {smcap.IssH.toLocaleString(
                                                       navigator.language,
                                                       {
                                                         minimumFractionDigits: 0,
                                                       }
                                                     )}
-                                                    <span class="currency currency-nio">
-                                                      
-                                                    </span>
+                                                    <span class="currency currency-nio"></span>
                                                   </div>
                                                 </div>
                                               </div>
                                             </div>
                                           </div>
-
 
                                           <div key={i} class="col-sm-3">
                                             <div class="card bg-light">
