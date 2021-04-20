@@ -371,6 +371,35 @@ const Securities = ({ currentUser }) => {
                                                     <em class="icon ni ni-sign-btc"></em>
                                                   </div>
                                                   <h5 class="nk-wgw-title title">
+                                                    Issued Shares
+                                                  </h5>
+                                                </div>
+                                                <div class="nk-wgw-balance">
+                                                  <div class="amount">
+                                                    {IssH.mcap.toLocaleString(
+                                                      navigator.language,
+                                                      {
+                                                        minimumFractionDigits: 0,
+                                                      }
+                                                    )}
+                                                    <span class="currency currency-nio">
+                                                      
+                                                    </span>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+                                          <div key={i} class="col-sm-3">
+                                            <div class="card bg-light">
+                                              <div class="nk-wgw sm">
+                                                <div class="nk-wgw-name">
+                                                  <div class="nk-wgw-icon">
+                                                    <em class="icon ni ni-sign-btc"></em>
+                                                  </div>
+                                                  <h5 class="nk-wgw-title title">
                                                     MarketCap(₦)
                                                   </h5>
                                                 </div>
@@ -397,7 +426,7 @@ const Securities = ({ currentUser }) => {
                                     {tTtade.map((sums, i) => {
                                       return (
                                         <Fragment>
-                                          <div key={i} class="col-sm-3">
+                                          <div key={i} class="col-sm-2">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
                                                 <div class="nk-wgw-name">
@@ -432,7 +461,7 @@ const Securities = ({ currentUser }) => {
                                     {tVolume.map((volume, i) => {
                                       return (
                                         <Fragment>
-                                          <div key={i} class="col-sm-3">
+                                          <div key={i} class="col-sm-2">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
                                                 <div class="nk-wgw-name">
@@ -466,7 +495,7 @@ const Securities = ({ currentUser }) => {
                                     {tValue.map((value, i) => {
                                       return (
                                         <Fragment>
-                                          <div key={i} class="col-sm-3">
+                                          <div key={i} class="col-sm-2">
                                             <div class="card bg-light">
                                               <div class="nk-wgw sm">
                                                 <div class="nk-wgw-name">
