@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: surveillance-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: surveillance
+  template:
+    metadata:
+      labels:
+        app: surveillance
+    spec:
+      containers:
+        - name: surveillance
+          image: dimeji45/surveillance
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: nasddatax
+            - name: MONGO_URI
+              value: 'mongodb://surveillance-mongo-srv:27017/surveillance'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: SENDGRID
+              valueFrom:
+                secretKeyRef:
+                  name: send-grid-secret
+                  key: SENDGRID
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: surveillance-srv
+spec:
+  selector:
+    app: surveillance
+  ports:
+    - name: surveillance
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

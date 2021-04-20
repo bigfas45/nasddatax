@@ -30,4 +30,8 @@ spec:
             backend:
               serviceName: brokers-srv
               servicePort: 3000
-              
+          - path: /api/surveillance/?(.*)
+            backend:
+              serviceName: surveillance-srv
+              servicePort: 3000
+                

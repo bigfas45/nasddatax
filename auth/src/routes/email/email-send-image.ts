@@ -57,7 +57,7 @@ export const emailImage = async (
              const emailData = {
       from: 'marketoperations@nasdng.com',
       to: `${val.email}`,
-      cc: 'marketreports@nasdng.com',
+      cc: 'emaillist@nasdng.com',
       subject: `${subject}`,
                  html: `
   <table border="0" align="center" width="100%" cellpadding="0" cellspacing="0" bgcolor="#f9fafc" style="background-color:rgb(249,250,252)">

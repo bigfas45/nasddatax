@@ -26,7 +26,7 @@ export const email = async (
   const emailData = {
     from: 'marketoperations@nasdng.com',
     to: `${email}`,
-    cc: 'marketreports@nasdng.com',
+    cc: 'emaillist@nasdng.com',
     subject: `Dear ${lastname}`,
     html: `<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0 auto !important;padding: 0 !important;font-size: 14px;margin-bottom: 10px;line-height: 24px;color: #8094ae;font-weight: 400;height: 100% !important;width: 100% !important;font-family: 'Roboto', sans-serif !important;">
