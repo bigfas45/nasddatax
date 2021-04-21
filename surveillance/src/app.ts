@@ -5,6 +5,8 @@ import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError } from '@nasddatax/common';
 
 import { IndexRouter } from './routes/index';
+import { UploadRouter } from './routes/upload';
+import { ListRouter } from './routes/list';
 
 
 
@@ -20,8 +22,8 @@ app.use(
 );
 
 app.use(IndexRouter);
-
-
+app.use(UploadRouter);
+app.use(ListRouter);
 
 app.get('*', async (req, res) => {
   throw new NotFoundError();

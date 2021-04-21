@@ -138,11 +138,11 @@ const SiderBar = () => {
                     </a>
                   </li>
                   <li className="nk-menu-item">
-                    <a href="/admin/bod" className="nk-menu-link">
+                    <a href="/admin/surveillance" className="nk-menu-link">
                       <span className="nk-menu-icon">
                         <em className="icon ni ni-bitcoin-cash"></em>
                       </span>
-                      <span className="nk-menu-text">BOD List</span>
+                      <span className="nk-menu-text">Surveillance</span>
                     </a>
                   </li>
                 </ul>
