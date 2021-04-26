@@ -120,13 +120,13 @@ const Surveillance = ({ currentUser }) => {
         accessor: 'account', // String-based value accessors!
         Cell: (props) => {
           return (
-            <span>
+            <div>
               <a
-                href={`/user/surveillance/${props.original.account}/${props.original.security}`}
+                href={`admin/surveillance/${props.original.account}.${props.original.security}`}
               >
                 {props.original.account}
               </a>
-            </span>
+            </div>
           );
         },
       },
@@ -289,12 +289,7 @@ const Surveillance = ({ currentUser }) => {
                                               return post._original;
                                             }
                                           );
-                                          return (
-                                            <div>
-                                              {filtredData()}
-                                              
-                                            </div>
-                                          );
+                                          return <div>{filtredData()}</div>;
                                         }}
                                       </ReactTable>
                                     ) : (

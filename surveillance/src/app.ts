@@ -7,6 +7,9 @@ import { errorHandler, NotFoundError } from '@nasddatax/common';
 import { IndexRouter } from './routes/index';
 import { UploadRouter } from './routes/upload';
 import { ListRouter } from './routes/list';
+import { BuyRouter } from './routes/buy';
+import { SellRouter } from './routes/sell';
+import { NameRouter } from './routes/name';
 
 
 
@@ -24,6 +27,9 @@ app.use(
 app.use(IndexRouter);
 app.use(UploadRouter);
 app.use(ListRouter);
+app.use(SellRouter);
+app.use(BuyRouter);
+app.use(NameRouter);
 
 app.get('*', async (req, res) => {
   throw new NotFoundError();

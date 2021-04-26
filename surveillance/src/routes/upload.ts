@@ -51,7 +51,7 @@ router.post(
             if (err) {
               console.log(`Error: ${err} rows`);
             }
-            console.log(`Inserted: ${result} rows`);
+            // console.log(`Inserted: ${result} rows`);
           });
 
           console.log('CSV file successfully processed.');

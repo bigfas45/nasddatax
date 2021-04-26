@@ -82,9 +82,10 @@ const DashboardLiveTable = () => {
             {liveData.map((trades, i) => {
               refprice = trades.openprice;
               closeprice = trades.closeprice;
-              pecup = refprice * 1.1;
 
+              pecup = refprice * 1.1;
               pecdown = refprice * (1 - 0.1);
+              
               if (trades.volume >= 5000) {
                 vwapC = trades.value / trades.volume;
                 if (vwapC >= pecdown || vwapC >= pecup) {

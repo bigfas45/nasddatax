@@ -10,7 +10,7 @@ import ReactTable from 'react-table-6';
 import 'react-table-6/react-table.css';
 import Loader from 'react-loader-spinner';
 import ExportToExcel from '../../components/user/Exports/Eod';
-
+import InvestorName from '../../components/admin/investorName'
 
 
 
@@ -50,6 +50,18 @@ const Eod = ({ currentUser }) => {
       },
     },
     {
+      Header: 'TO ACCOUNT NAME',
+      accessor: 'TO_ACCOUNT', // String-based value accessors!
+
+      Cell: (props) => {
+        return (
+          <div>
+            <InvestorName account={props.original.TO_ACCOUNT} />
+          </div>
+        );
+      },
+    },
+    {
       Header: 'TO ACCOUNT',
       accessor: 'TO_ACCOUNT', // String-based value accessors!
       style: {
@@ -68,6 +80,17 @@ const Eod = ({ currentUser }) => {
       accessor: 'FROM_MEMBER', // String-based value accessors!
       style: {
         textAlign: 'right',
+      },
+    },
+    {
+      Header: 'FROM ACCOUNT NAME',
+      accessor: 'FROM_ACCOUNT', // String-based value accessors!
+      Cell: (props) => {
+        return (
+          <div>
+            <InvestorName account={props.original.FROM_ACCOUNT} />
+          </div>
+        );
       },
     },
     {
@@ -147,7 +170,6 @@ const Eod = ({ currentUser }) => {
         textAlign: 'right',
       },
     },
-    
   ];
 
 
