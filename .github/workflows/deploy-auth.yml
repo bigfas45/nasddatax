@@ -22,3 +22,4 @@ jobs:
       - run: doctl kubernetes cluster kubeconfig save nasddatax
       - run: kubectl rollout restart deployment auth-depl
       
+
