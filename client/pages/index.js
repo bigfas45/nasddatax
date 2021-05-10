@@ -123,7 +123,7 @@ const LandingPage = ({ currentUser, dateTicker }) => {
         {/* <Nsi /> */}
         <Ticker date={dateTicker} />
 
-        <Highcharts></Highcharts>
+        {/* <Highcharts></Highcharts> */}
       </body>
     </Fragment>
   );
