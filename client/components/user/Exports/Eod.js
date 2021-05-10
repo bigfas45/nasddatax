@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState, Component } from "react";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel'
-import InvestorName from '../../components/admin/investorName';
+import InvestorName from '../../../components/admin/investorName';
 
 const ExportToExcel = ({post}) => {
 
