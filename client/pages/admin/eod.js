@@ -49,18 +49,18 @@ const Eod = ({ currentUser }) => {
         textAlign: 'center',
       },
     },
-    {
-      Header: 'TO ACCOUNT NAME',
-      accessor: 'TO_ACCOUNT', // String-based value accessors!
+    // {
+    //   Header: 'TO ACCOUNT NAME',
+    //   accessor: 'TO_ACCOUNT', // String-based value accessors!
 
-      Cell: (props) => {
-        return (
-          <div>
-            <InvestorName account={props.original.TO_ACCOUNT} />
-          </div>
-        );
-      },
-    },
+    //   Cell: (props) => {
+    //     return (
+    //       <div>
+    //         <InvestorName account={props.original.TO_ACCOUNT} />
+    //       </div>
+    //     );
+    //   },
+    // },
     {
       Header: 'TO ACCOUNT',
       accessor: 'TO_ACCOUNT', // String-based value accessors!
@@ -82,17 +82,17 @@ const Eod = ({ currentUser }) => {
         textAlign: 'right',
       },
     },
-    {
-      Header: 'FROM ACCOUNT NAME',
-      accessor: 'FROM_ACCOUNT', // String-based value accessors!
-      Cell: (props) => {
-        return (
-          <div>
-            <InvestorName account={props.original.FROM_ACCOUNT} />
-          </div>
-        );
-      },
-    },
+    // {
+    //   Header: 'FROM ACCOUNT NAME',
+    //   accessor: 'FROM_ACCOUNT', // String-based value accessors!
+    //   Cell: (props) => {
+    //     return (
+    //       <div>
+    //         <InvestorName account={props.original.FROM_ACCOUNT} />
+    //       </div>
+    //     );
+    //   },
+    // },
     {
       Header: 'FROM ACCOUNT',
       accessor: 'FROM_ACCOUNT', // String-based value accessors!
