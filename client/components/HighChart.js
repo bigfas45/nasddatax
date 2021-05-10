@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
  import highchart from './highchart.css';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
+
 var strtotime = require('strtotime');
 import useRequest from '../hooks/use-request';
 var strtotime = require('strtotime');
