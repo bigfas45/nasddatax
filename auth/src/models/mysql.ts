@@ -11,12 +11,12 @@ export const db = mysql.createConnection({
 
 
   
-  // connect 
-  //@ts-ignore
-  // db.connect((err) => {
-  //   if (err){
-  //     throw err;
-  //   } 
-  //   console.log('Mysql 1 Connected ')
-  // });
+ //connect 
+ // @ts-ignore
+  db.connect((err) => {
+    if (err){
+     console.log(err);
+    } 
+    console.log('Mysql 1 Connected ')
+  });
 
