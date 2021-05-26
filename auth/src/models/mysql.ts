@@ -1,22 +1,18 @@
 import mysql from 'mysql';
 
-export const db = mysql.createConnection({
+const db = mysql.createPool({
     host      : 'nasdotcng.com',
     user      : 'notcsadm_otc',
-    password  :  'N#M3IM^stG0' ,
+    password  : 'N#M3IM^stG0' ,
     database  :  'notcsadm_nplcsadm_nsd_new',
     multipleStatements: true
-});
-  
-
-
-  
- //connect 
- // @ts-ignore
-  db.connect((err) => {
-    if (err){
-     console.log(err);
-    } 
-    console.log('Mysql 1 Connected ')
   });
+  
+  // connect 
+  // @ts-ignore
+db.getConnection(function(err, connection) {
+  // connected! (unless `err` is set)
+  connection.end();
+});
 
+export {db}
