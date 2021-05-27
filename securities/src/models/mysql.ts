@@ -1,5 +1,4 @@
 import mysql from 'mysql';
-
 const db = mysql.createPool({
     host      : 'nasdotcng.com',
     user      : 'notcsadm_otc',
