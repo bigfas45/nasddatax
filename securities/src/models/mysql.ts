@@ -9,9 +9,10 @@ const db = mysql.createPool({
   });
   
   
-  
+  // @ts-ignore
 db.getConnection(function(err, connection) {
   // connected! (unless `err` is set)
+  // @ts-ignore
   connection.release();
 });
 
