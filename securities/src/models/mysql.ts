@@ -12,7 +12,7 @@ const db = mysql.createPool({
   
 db.getConnection(function(err, connection) {
   // connected! (unless `err` is set)
-  // connection.end();
+  connection.release();
 });
 
 export {db}
