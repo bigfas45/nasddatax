@@ -5,7 +5,7 @@ const db = mysql.createPool({
     user      : 'notcsadm_otc',
     password  : 'N#M3IM^stG0' ,
     database  :  'notcsadm_nplcsadm_nsd_new',
-    connectionLimit: 5,
+  
   });
   
   
