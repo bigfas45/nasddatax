@@ -18,6 +18,8 @@ import { EmailGetRouter } from './routes/get-email-id';
 import { EmailGetFileRouter } from './routes/read-email-file';
 import { EmailSendOpsRouter } from './routes/send-email-marketoperation';
 import { EmailSendPIRouter } from './routes/send-email-pi';
+import { EmailComSendAllRouter } from './routes/email-all-comp-sec';
+
 import { EmailSendImageRouter } from './routes/send-email-image';
 import { EmailSendAllRouter } from './routes/email-all-participant';
 import { UserEmailGetRouter } from './routes/password-reset';
@@ -54,6 +56,7 @@ app.use(EmailSendImageRouter);
 app.use(UserActivitiesRouter);
 app.use(EmailSendAllRouter);
 app.use(UserEmailGetRouter);
+app.use(EmailComSendAllRouter);
 
 app.get('*', async (req, res) => {
   throw new NotFoundError();

@@ -15,4 +15,4 @@ router.get('/api/users/email/companysec/:emailId', currentUser,emailPi, (req, re
 });
 
 
-export { router as EmailSendAllRouter };
+export { router as EmailComSendAllRouter };
