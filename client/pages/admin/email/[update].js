@@ -194,7 +194,7 @@ const EmailUpdate = ({ currentUser, EmailId }) => {
     },
   });
 
-  const { doRequest, errors, loading, success } = useRequest({
+  const { doRequest, errors } = useRequest({
     url: `/api/users/email/companysec/${EmailId}`,
     method: 'get',
     body: {},
