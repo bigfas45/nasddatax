@@ -9,6 +9,7 @@ import useRequest3 from '../../../hooks/use-request3';
 import useRequest4 from '../../../hooks/use-request4';
 import useRequest5 from '../../../hooks/use-request5';
 import useRequest6 from '../../../hooks/use-request6';
+import useRequest from '../../../hooks/use-request';
 
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
@@ -16,7 +17,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import Loader from 'react-loader-spinner';
 import Router from 'next/router';
 import { updateEmail } from '../../../components/admin/ApiAdmin';
-
 
 const EmailUpdate = ({ currentUser, EmailId }) => {
   const [data2, setData] = useState([]);
@@ -61,151 +61,149 @@ const EmailUpdate = ({ currentUser, EmailId }) => {
     },
   });
 
-
   // Operations
 
+  const { doRequest3, errors3, loading3, success3 } = useRequest3({
+    url: `/api/users/email/operations/${EmailId}`,
+    method: 'get',
+    body: {},
 
-    const { doRequest3, errors3, loading3, success3 } = useRequest3({
-      url: `/api/users/email/operations/${EmailId}`,
-      method: 'get',
-      body: {},
-
-      onSuccess: (data) => {
+    onSuccess: (data) => {
       console.log(data);
-       
-      },
-    });
-  
- 
-  
-    const showLoading3 = () =>
-      loading3 && (
-        <div>
-          <div className="text-center">
-            <Loader
-              type="Rings"
-              color="#00BFFF"
-              height={50}
-              width={50}
-              timeout={1000000}
-              //3 secs
-            />
+    },
+  });
+
+  const showLoading3 = () =>
+    loading3 && (
+      <div>
+        <div className="text-center">
+          <Loader
+            type="Rings"
+            color="#00BFFF"
+            height={50}
+            width={50}
+            timeout={1000000}
+            //3 secs
+          />
+        </div>
+      </div>
+    );
+
+  const showAlert3 = () =>
+    success3 && (
+      <div>
+        <div class="example-alert">
+          <div class="alert alert-primary alert-icon">
+            <em class="icon ni ni-alert-circle"></em>{' '}
+            <strong>
+              Test email to marketoperations@nasdng.com has been sent!!!{' '}
+            </strong>
+            .
           </div>
         </div>
+      </div>
     );
-  
-  
-     const showAlert3 = () =>
-       success3 && (
-         <div>
-           <div class="example-alert">
-             <div class="alert alert-primary alert-icon">
-               <em class="icon ni ni-alert-circle"></em>{' '}
-               <strong>Test email to marketoperations@nasdng.com has been sent!!! </strong>. 
-             </div>
-           </div>
-         </div>
-    );
-  
-   const submit = () => {
-     confirmAlert({
-       title: 'Confirm to submit',
-       message: 'Are you sure to send email to marketoperations@nasdng.com?.',
-       buttons: [
-         {
-           label: 'Yes',
-           onClick: () => doRequest3(),
-         },
-         {
-           label: 'No',
-           onClick: () => alert('Click No'),
-         },
-       ],
-     });
-   };
-  
-  
+
+  const submit = () => {
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure to send email to marketoperations@nasdng.com?.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => doRequest3(),
+        },
+        {
+          label: 'No',
+          onClick: () => alert('Click No'),
+        },
+      ],
+    });
+  };
+
   // End Operation
-  
 
   // NASD PI
-  
-      const { doRequest4, errors4, loading4, success4 } = useRequest4({
-        url: `/api/users/email/pi/${EmailId}`,
-        method: 'get',
-        body: {},
 
-        onSuccess: (data) => {
-          console.log(data);
-        },
-      });
-  
-  
-   const showLoading4 = () =>
-     loading4 && (
-       <div>
-         <div className="text-center">
-           <Loader
-             type="Rings"
-             color="#00BFFF"
-             height={50}
-             width={50}
-             timeout={1000000}
-             //3 secs
-           />
-         </div>
-       </div>
-     );
+  const { doRequest4, errors4, loading4, success4 } = useRequest4({
+    url: `/api/users/email/pi/${EmailId}`,
+    method: 'get',
+    body: {},
 
-   const showAlert4 = () =>
-     success4 && (
-       <div>
-         <div class="example-alert">
-           <div class="alert alert-primary alert-icon">
-             <em class="icon ni ni-alert-circle"></em>{' '}
-             <strong>
-                Email to NASD Participant has been sent!!!{' '}
-             </strong>
-             .
-           </div>
-         </div>
-       </div>
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
+  const showLoading4 = () =>
+    loading4 && (
+      <div>
+        <div className="text-center">
+          <Loader
+            type="Rings"
+            color="#00BFFF"
+            height={50}
+            width={50}
+            timeout={1000000}
+            //3 secs
+          />
+        </div>
+      </div>
     );
-  
-  
-   const submitPi = () => {
-     confirmAlert({
-       title: 'Confirm to submit',
-       message: 'Are you sure to send email to All NASD Participant.',
-       buttons: [
-         {
-           label: 'Yes',
-           onClick: () => doRequest4(),
-         },
-         {
-           label: 'No',
-           onClick: () => alert('Click No'),
-         },
-       ],
-     });
-  };
-  
-  // END PI
 
+  const showAlert4 = () =>
+    success4 && (
+      <div>
+        <div class="example-alert">
+          <div class="alert alert-primary alert-icon">
+            <em class="icon ni ni-alert-circle"></em>{' '}
+            <strong>Email to NASD Participant has been sent!!! </strong>.
+          </div>
+        </div>
+      </div>
+    );
+
+  const submitPi = () => {
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure to send email to All NASD Participant.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => doRequest4(),
+        },
+        {
+          label: 'No',
+          onClick: () => alert('Click No'),
+        },
+      ],
+    });
+  };
+
+  // END PI
 
   // Start Image
 
-   const { doRequest5, errors5, loading5, success5 } = useRequest5({
-     url: `/api/users/email/image/${EmailId}`,
-     method: 'get',
-     body: {},
+  const { doRequest5, errors5, loading5, success5 } = useRequest5({
+    url: `/api/users/email/image/${EmailId}`,
+    method: 'get',
+    body: {},
 
-     onSuccess: (data) => {
-       console.log(data);
-     },
-   });
-  
-  
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
+  const { doRequest, errors, loading, success } = useRequest({
+    url: `/api/users/email/companysec/${EmailId}`,
+    method: 'get',
+    body: {},
+
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
   const showLoading5 = () =>
     loading5 && (
       <div>
@@ -251,51 +249,68 @@ const EmailUpdate = ({ currentUser, EmailId }) => {
     });
   };
 
-  // End Image
+  // comapny sec
 
+  const submitCompSec = () => {
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure to send email to NASD company sec',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => doRequest(),
+        },
+        {
+          label: 'No',
+          onClick: () => alert('Click No'),
+        },
+      ],
+    });
+  };
+  // comapny sec
+
+  // End Image
 
   // Start For All market participant
 
-     const { doRequest6, errors6, loading6, success6 } = useRequest6({
-       url: `/api/users/email/all/${EmailId}`,
-       method: 'get',
-       body: {},
+  const { doRequest6, errors6, loading6, success6 } = useRequest6({
+    url: `/api/users/email/all/${EmailId}`,
+    method: 'get',
+    body: {},
 
-       onSuccess: (data) => {
-         console.log(data);
-       },
-     });
-  
-    const showAlert6 = () =>
-      success6 && (
-        <div>
-          <div class="example-alert">
-            <div class="alert alert-primary alert-icon">
-              <em class="icon ni ni-alert-circle"></em>{' '}
-              <strong>Email to NASD Participant has been sent!!! </strong>.
-            </div>
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
+  const showAlert6 = () =>
+    success6 && (
+      <div>
+        <div class="example-alert">
+          <div class="alert alert-primary alert-icon">
+            <em class="icon ni ni-alert-circle"></em>{' '}
+            <strong>Email to NASD Participant has been sent!!! </strong>.
           </div>
         </div>
+      </div>
     );
-  
-    const submitAllPI = () => {
-      confirmAlert({
-        title: 'Confirm to submit',
-        message:
-          'Are you sure to send email to both NSE & NASD Participant.',
-        buttons: [
-          {
-            label: 'Yes',
-            onClick: () => doRequest6(),
-          },
-          {
-            label: 'No',
-            onClick: () => alert('Click No'),
-          },
-        ],
-      });
-    };
-  
+
+  const submitAllPI = () => {
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure to send email to both NSE & NASD Participant.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => doRequest6(),
+        },
+        {
+          label: 'No',
+          onClick: () => alert('Click No'),
+        },
+      ],
+    });
+  };
 
   useEffect(() => {
     currentUser && currentUser.userType != 1
@@ -353,30 +368,29 @@ const EmailUpdate = ({ currentUser, EmailId }) => {
     );
   };
 
-    const redirectUser = () => {
-      if (redirectToProfile) {
-        if (!error) {
-          return Router.push(`/admin/email/${EmailId}`);
-        }
+  const redirectUser = () => {
+    if (redirectToProfile) {
+      if (!error) {
+        return Router.push(`/admin/email/${EmailId}`);
       }
-    };
+    }
+  };
 
-    const showLoading = () =>
-      loading && (
-        <div>
-        
-          <div className="text-center">
-            <Loader
-              type="Rings"
-              color="#00BFFF"
-              height={50}
-              width={50}
-              timeout={1000000}
-              //3 secs
-            />
-          </div>
+  const showLoading = () =>
+    loading && (
+      <div>
+        <div className="text-center">
+          <Loader
+            type="Rings"
+            color="#00BFFF"
+            height={50}
+            width={50}
+            timeout={1000000}
+            //3 secs
+          />
         </div>
-      );
+      </div>
+    );
 
   return (
     <Fragment>
@@ -460,9 +474,24 @@ const EmailUpdate = ({ currentUser, EmailId }) => {
                               }
                             >
                               <em class="icon ni ni-repeat"></em>
-                              <span>Email With ImageTo NASD Participant</span>
+                              <span>Email With Image To NASD Participant</span>
                             </a>
                           </li>
+                          {/* company sec                                 */}
+                          <li class="nav-item">
+                            <a
+                              class="nav-link"
+                              onClick={() =>
+                                submitCompSec(() => {
+                                  console.log('done');
+                                })
+                              }
+                            >
+                              <em class="icon ni ni-repeat"></em>
+                              <span>Email Company Sec</span>
+                            </a>
+                          </li>
+                          {/* company sec                                 */}
                         </ul>
                         <div className="card-inner card-inner-lg">
                           <div className="nk-block-head">
