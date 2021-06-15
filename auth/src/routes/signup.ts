@@ -24,7 +24,7 @@ router.post('/api/users/signup', [
    
 
 ],
-  validateRequest,email,
+  validateRequest,
   async (req: Request, res: Response) => {
     
     
@@ -59,7 +59,7 @@ router.post('/api/users/signup', [
       bCode: user.bCode,
       firstname: user.firstname,
       lastname: user.lastname,
-     userType: user.userType,
+     userType: user.userType!,
      status: user.status,
      expiresAt: user.expiresAt
 
