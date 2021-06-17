@@ -24,7 +24,7 @@ router.post('/api/users/signup', [
    
 
 ],
-  validateRequest,
+  validateRequest,email,
   async (req: Request, res: Response) => {
     
     
