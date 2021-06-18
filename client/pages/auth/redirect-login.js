@@ -14,15 +14,14 @@ const Access = () => {
                     <h1 class="nk-error-head">401</h1>
 
                     <h3 class="nk-error-title"> ACCESS DENIED</h3>
-                    <h3 class="nk-error-title">You need to login to acess the page </h3>
+                    <h3 class="nk-error-title">
+                      You need to login to acess the page{' '}
+                    </h3>
                     <p class="nk-error-text">
                       Contact marketoperations@nasdng.com or (+234-902-455-9686)
                       for more information.
                     </p>
-                    <a
-                      href="user/auth/signin"
-                      class="btn btn-lg btn-primary mt-2"
-                    >
+                    <a href="/auth/signin" class="btn btn-lg btn-primary mt-2">
                       Signin
                     </a>
                   </div>
